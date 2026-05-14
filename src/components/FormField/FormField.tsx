@@ -1,23 +1,23 @@
-import { cn } from "../../utils/cn";
-import { Label } from "../Label";
-import { errorText, formField, helpText } from "./FormField.css";
-import type { FormFieldProps } from "./FormField.types";
+import { ReactNode } from "react";
+import * as styles from "./FormField.css";
 
-export const FormField = ({
-  label,
-  htmlFor,
-  helpText: help,
-  error,
-  children,
-  className,
-  ...props
-}: FormFieldProps) => {
+interface Props {
+  label?: string;
+  error?: string;
+  hint?: string;
+  required?: boolean;
+  children: ReactNode;
+}
+
+export const FormField = ({ label, error, hint, children }: Props) => {
   return (
-    <div className={cn(formField, className)} {...props}>
-      {label ? <Label htmlFor={htmlFor}>{label}</Label> : null}
+    <div className={styles.wrapper}>
+      {label && <label className={styles.label}>{label}</label>}
+
       {children}
-      {error ? <span className={errorText}>{error}</span> : null}
-      {!error && help ? <span className={helpText}>{help}</span> : null}
+
+      {error && <div className={styles.error}>{error}</div>}
+      {!error && hint && <div className={styles.hint}>{hint}</div>}
     </div>
   );
 };
