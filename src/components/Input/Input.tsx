@@ -1,18 +1,12 @@
-import { forwardRef } from "react";
-import { cn } from "../../utils/cn";
-import { input } from "./Input.css";
+import clsx from "clsx";
+import * as styles from "./Input.css";
 import type { InputProps } from "./Input.types";
 
-export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
-  { className, type = "text", size = "md", variant = "primary", ...props },
-  ref
-) {
+export const Input = ({ invalid, className, ...props }: InputProps) => {
   return (
     <input
-      ref={ref}
-      type={type}
-      className={cn(input({ size, variant }), className)}
+      className={clsx(styles.input, invalid && styles.invalid, className)}
       {...props}
     />
   );
-});
+};

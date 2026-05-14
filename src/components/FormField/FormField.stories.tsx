@@ -34,7 +34,7 @@ export const WithHelpText: Story = {
 export const WithError: Story = {
   render: () => (
     <FormField label="Email" error="Please enter a valid address.">
-      <Input id="email-error" variant="danger" placeholder="name@company.com" />
+      <Input id="email-error" invalid placeholder="name@company.com" />
     </FormField>
   )
 };

@@ -7,15 +7,12 @@ const meta = {
   tags: ["autodocs"],
   args: {
     placeholder: "Enter your email",
-    size: "md",
-    variant: "primary"
+    disabled: false,
+    invalid: false
   },
   argTypes: {
-    size: { control: "radio", options: ["sm", "md", "lg"] },
-    variant: {
-      control: "radio",
-      options: ["primary", "secondary", "ghost", "danger"]
-    },
+    disabled: { control: "boolean" },
+    invalid: { control: "boolean" },
     onChange: { action: "changed" }
   }
 } satisfies Meta<typeof Input>;
@@ -30,5 +27,12 @@ export const Disabled: Story = {
   args: {
     disabled: true,
     value: "Disabled field"
+  }
+};
+
+export const Invalid: Story = {
+  args: {
+    invalid: true,
+    placeholder: "Invalid input"
   }
 };
