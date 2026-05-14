@@ -1,10 +1,9 @@
-import type { ButtonHTMLAttributes, CSSProperties } from "react";
-import type { ComponentSize, ComponentVariant } from "../../types/shared";
+export type ButtonIntent = "primary" | "secondary" | "danger" | "ghost";
+export type ButtonSize = "sm" | "md" | "lg";
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  size?: ComponentSize;
-  variant?: ComponentVariant;
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  intent?: ButtonIntent;
+  size?: ButtonSize;
   loading?: boolean;
-  className?: string;
-  style?: CSSProperties;
+  fullWidth?: boolean;
 }

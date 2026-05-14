@@ -1,32 +1,30 @@
-import { forwardRef } from "react";
-import { cn } from "../../utils/cn";
-import { button, spinner } from "./Button.css";
+import clsx from "clsx";
+import * as styles from "./Button.css";
 import type { ButtonProps } from "./Button.types";
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
-  {
-    className,
-    size = "md",
-    variant = "primary",
-    type = "button",
-    loading = false,
-    disabled,
-    children,
-    ...props
-  },
-  ref
-) {
+export const Button = ({
+  intent = "primary",
+  size = "md",
+  loading = false,
+  fullWidth = false,
+  className,
+  children,
+  ...props
+}: ButtonProps) => {
   return (
     <button
-      ref={ref}
-      type={type}
-      className={cn(button({ size, variant, loading }), className)}
-      disabled={disabled || loading}
-      aria-busy={loading}
+      className={clsx(
+        styles.base,
+        styles.intent[intent],
+        styles.size[size],
+        fullWidth && styles.fullWidth,
+        loading && styles.loading,
+        className
+      )}
+      disabled={loading || props.disabled}
       {...props}
     >
-      {loading ? <span className={spinner} aria-hidden="true" /> : null}
-      <span>{children}</span>
+      {children}
     </button>
   );
-});
+};
