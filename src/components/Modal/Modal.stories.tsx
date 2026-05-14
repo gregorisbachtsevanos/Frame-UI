@@ -34,7 +34,7 @@ export const Playground: Story = {
           title="Invite team"
           footer={
             <>
-              <Button variant="ghost" onClick={() => setOpen(false)}>
+              <Button intent="ghost" onClick={() => setOpen(false)}>
                 Cancel
               </Button>
               <Button onClick={() => setOpen(false)}>Send invite</Button>
