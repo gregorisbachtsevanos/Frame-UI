@@ -8,7 +8,7 @@ const config: StorybookConfig = {
     options: {},
   },
 
-  stories: ["../../packages/ui/src/**/*.stories.@(ts|tsx|mdx)"],
+  stories: ["../../../packages/ui/src/**/*.stories.@(ts|tsx|mdx)"],
 
   addons: [
     "@storybook/addon-essentials",
@@ -24,8 +24,8 @@ const config: StorybookConfig = {
     config.resolve = {
       ...config.resolve,
       alias: {
-        "@frame-ui/theme": path.resolve(__dirname, "../../packages/theme/src"),
-        "@frame-ui/ui": path.resolve(__dirname, "../../packages/ui/src"),
+        "@frame-ui/theme": path.resolve(__dirname, "../../../packages/theme/src"),
+        "@frame-ui/ui": path.resolve(__dirname, "../../../packages/ui/src"),
       },
     };
 
