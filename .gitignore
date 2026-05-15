@@ -1,4 +1,6 @@
 node_modules
 dist
-coverage
 storybook-static
+coverage
+.turbo
+.env
