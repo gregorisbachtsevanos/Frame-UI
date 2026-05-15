@@ -5,7 +5,6 @@
     "moduleResolution": "Bundler",
     "noEmit": true,
     "skipLibCheck": true,
-    "types": ["node"]
-  },
-  "include": [".storybook", "src"]
+    "ignoreDeprecations": "6.0"
+  }
 }
