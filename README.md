@@ -58,7 +58,8 @@ pnpm --filter @frame-ui/tokens build
 
 Each folder with a `package.json` has its own README with local commands:
 
-- `apps/storybook/README.md`
-- `packages/ui/README.md`
-- `packages/theme/README.md`
-- `packages/tokens/README.md`
+- [apps/storybook/README.md](https://github.com/gregorisbachtsevanos/Frame-UI/tree/master/apps/storybook)
+- [packages/ui/README.md](https://github.com/gregorisbachtsevanos/Frame-UI/tree/master/packages/ui)
+- [packages/theme/README.md](https://github.com/gregorisbachtsevanos/Frame-UI/tree/master/packages/theme)
+- [packages/tokens/README.md](https://github.com/gregorisbachtsevanos/Frame-UI/tree/master/packages/tokens)
+
