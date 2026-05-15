@@ -10,23 +10,23 @@ export default defineConfig({
     vanillaExtractPlugin(),
     dts({
       tsconfigPath: "./tsconfig.build.json",
-      insertTypesEntry: true,
     }),
   ],
+
+  resolve: {
+    alias: {
+      "@frame-ui/theme": path.resolve(__dirname, "../theme/src"),
+      "@frame-ui/tokens": path.resolve(__dirname, "../tokens/src"),
+    },
+  },
 
   build: {
     lib: {
       entry: path.resolve(__dirname, "src/index.ts"),
-      name: "UiLibrary",
       formats: ["es", "cjs"],
-      fileName: (format) => (format === "es" ? "index.js" : "index.cjs"),
     },
-
     rollupOptions: {
       external: ["react", "react-dom"],
     },
-
-    sourcemap: true,
-    emptyOutDir: true,
   },
 });

@@ -1,29 +1,13 @@
-import { recipe } from "@vanilla-extract/recipes";
+import { style } from "@vanilla-extract/css";
+import { vars } from "@frame-ui/theme";
 
-export const button = recipe({
-  base: {
-    border: "none",
-    borderRadius: 8,
-    padding: "12px 16px",
-    cursor: "pointer",
-    fontWeight: 600,
-  },
+export const button = style({
+  padding: "10px 16px",
+  borderRadius: "8px",
 
-  variants: {
-    variant: {
-      primary: {
-        background: "#111",
-        color: "#fff",
-      },
+  background: vars.color.primary,
+  color: vars.color.text,
 
-      secondary: {
-        background: "#e5e5e5",
-        color: "#111",
-      },
-    },
-  },
-
-  defaultVariants: {
-    variant: "primary",
-  },
+  border: "none",
+  cursor: "pointer",
 });

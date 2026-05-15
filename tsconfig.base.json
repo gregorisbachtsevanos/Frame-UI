@@ -3,6 +3,7 @@
     "target": "ES2022",
     "lib": ["DOM", "ES2022"],
     "module": "ESNext",
+    "baseUrl": ".",
     "moduleResolution": "Bundler",
     "jsx": "react-jsx",
     "strict": true,
@@ -10,6 +11,11 @@
     "declaration": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "paths": {
+      "@frame-ui/tokens": ["packages/tokens/src/index.ts"],
+      "@frame-ui/theme": ["packages/theme/src/index.ts"],
+      "@frame-ui/ui": ["packages/ui/src"]
+    }
   }
 }
