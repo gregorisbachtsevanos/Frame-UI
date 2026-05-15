@@ -1,74 +1,64 @@
-# UI Library
+# Frame UI Monorepo
 
-A modern, reusable React + TypeScript component library using Vite (library mode), Storybook, and vanilla-extract.
+This repo is a pnpm workspace with:
 
-## Stack
+- `packages/ui` (React component library)
+- `packages/theme` (theme package)
+- `packages/tokens` (design tokens)
+- `apps/storybook` (storybook app)
 
-- React + TypeScript
-- Vite library build (ESM + CJS + types)
-- Storybook
-- vanilla-extract tokens + themes
-- clsx for class composition
+## 1) Prerequisites
 
-## Design System
+- Node.js `>=22 <24`
+- pnpm `10`
 
-The library ships with semantic design tokens and two themes:
-
-- `lightTheme`
-- `darkTheme`
-
-Tokens include:
-
-- semantic colors (`background`, `foreground`, `primary`, `secondary`, `muted`, `accent`, `danger`) with `default`, `hover`, `active`, `disabled`
-- spacing (4px base scale)
-- radii (6px-12px)
-- shadow scale
-- typography scale
-
-## Run
+Check your versions:
 
 ```bash
-npm install
-npm run dev
+node -v
+pnpm -v
 ```
 
-## Build
+If your Node is `24.x`, switch to Node `22.x` to avoid engine warnings.
+
+## 2) First-time setup (run from repo root)
 
 ```bash
-npm run build
+pnpm install
 ```
 
-## Example Usage
+## 3) Start development (run from repo root)
 
-```tsx
-import { ThemeProvider, Button, Card, CardBody, CardHeader, Input, Tabs } from "@your-github-org/ui-lib";
-
-export function App() {
-  return (
-    <ThemeProvider mode="system">
-      <Card>
-        <CardHeader>Welcome</CardHeader>
-        <CardBody>
-          <Input placeholder="Email" />
-          <Button style={{ marginTop: 12 }}>Continue</Button>
-        </CardBody>
-      </Card>
-
-      <Tabs
-        items={[
-          { id: "a", label: "Overview", content: "Overview content" },
-          { id: "b", label: "Activity", content: "Activity content" }
-        ]}
-      />
-    </ThemeProvider>
-  );
-}
+```bash
+pnpm dev
 ```
 
-## Scripts
+This builds required packages and starts dev tasks via Turbo.
 
-- `npm run dev` - run Storybook locally
-- `npm run build` - build library
-- `npm run test` - run tests
-- `npm run lint` - run ESLint
-- `npm run format` - run Prettier
+## 4) Useful root commands (run from repo root)
+
+```bash
+pnpm build
+pnpm lint
+pnpm test
+```
+
+## 5) Run a specific workspace
+
+From repo root:
+
+```bash
+pnpm --filter @frame-ui/storybook dev
+pnpm --filter @frame-ui/ui build
+pnpm --filter @frame-ui/theme build
+pnpm --filter @frame-ui/tokens build
+```
+
+## 6) Commands by folder
+
+Each folder with a `package.json` has its own README with local commands:
+
+- `apps/storybook/README.md`
+- `packages/ui/README.md`
+- `packages/theme/README.md`
+- `packages/tokens/README.md`
