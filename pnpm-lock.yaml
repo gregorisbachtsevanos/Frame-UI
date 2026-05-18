@@ -114,6 +114,9 @@ importers:
       '@storybook/core':
         specifier: 8.6.18
         version: 8.6.18(prettier@2.8.8)(storybook@8.6.18(prettier@2.8.8))
+      '@storybook/react':
+        specifier: 8.6.18
+        version: 8.6.18(@storybook/test@8.6.18(storybook@8.6.18(prettier@2.8.8)))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(storybook@8.6.18(prettier@2.8.8))(typescript@5.9.3)
       '@storybook/test':
         specifier: 8.6.18
         version: 8.6.18(storybook@8.6.18(prettier@2.8.8))
