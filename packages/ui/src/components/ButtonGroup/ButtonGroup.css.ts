@@ -1,11 +1,49 @@
-import { style } from "@vanilla-extract/css";
+import { style, styleVariants } from "@vanilla-extract/css";
 import { vars } from "@frame-ui/theme";
+
 export const root = style({
-  borderRadius: "12px",
-  border: "1px solid #e2e8f0",
-  background: "#ffffff",
-  color: vars.color.text,
-  padding: "10px 12px",
-  boxShadow: "0 2px 10px rgba(15, 23, 42, 0.04)",
+	display: "inline-flex",
+	alignItems: "center",
+
+	borderRadius: vars.radius.md,
+	border: `1px solid ${vars.color.border}`,
+	background: vars.color.surface,
+
+	boxShadow: vars.shadow.sm,
+
+	overflow: "hidden",
 });
 
+export const size = styleVariants({
+	sm: {
+		gap: "4px",
+		padding: "4px",
+	},
+	md: {
+		gap: "6px",
+		padding: "6px",
+	},
+	lg: {
+		gap: "8px",
+		padding: "8px",
+	},
+});
+
+export const attached = style({
+	selectors: {
+		"& > button:not(:first-child)": {
+			borderLeft: "none",
+			borderRadius: 0,
+		},
+
+		"& > button:first-child": {
+			borderTopRightRadius: 0,
+			borderBottomRightRadius: 0,
+		},
+
+		"& > button:last-child": {
+			borderTopLeftRadius: 0,
+			borderBottomLeftRadius: 0,
+		},
+	},
+});
