@@ -1,11 +1,25 @@
 import { style } from "@vanilla-extract/css";
 import { vars } from "@frame-ui/theme";
+
 export const root = style({
-  borderRadius: "12px",
-  border: "1px solid #e2e8f0",
-  background: "#ffffff",
-  color: vars.color.text,
-  padding: "10px 12px",
-  boxShadow: "0 2px 10px rgba(15, 23, 42, 0.04)",
+	display: "flex",
+	alignItems: "center",
+	gap: "6px",
+	fontSize: "13px",
+	color: vars.color.text,
 });
 
+export const item = style({
+	color: vars.color.text,
+	textDecoration: "none",
+
+	selectors: {
+		"&:hover": {
+			textDecoration: "underline",
+		},
+	},
+});
+
+export const separator = style({
+	opacity: 0.5,
+});

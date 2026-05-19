@@ -1,16 +1,23 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Breadcrumb } from "./Breadcrumb";
+import { Breadcrumb, BreadcrumbItem, BreadcrumbSeparator } from "./Breadcrumb";
 
 const meta: Meta<typeof Breadcrumb> = {
-  title: "Components/Breadcrumb",
-  component: Breadcrumb,
+	title: "Components/Breadcrumb",
+	component: Breadcrumb,
 };
 
 export default meta;
+
 type Story = StoryObj<typeof Breadcrumb>;
 
 export const Default: Story = {
-  args: {
-    children: "Home / Library / Data"
-  },
+	render: () => (
+		<Breadcrumb>
+			<BreadcrumbItem href="#">Home</BreadcrumbItem>
+			<BreadcrumbSeparator />
+			<BreadcrumbItem href="#">Library</BreadcrumbItem>
+			<BreadcrumbSeparator />
+			<BreadcrumbItem current>Data</BreadcrumbItem>
+		</Breadcrumb>
+	),
 };
