@@ -1,10 +1,46 @@
-import { HTMLAttributes } from "react";
+import { HTMLAttributes, ReactNode } from "react";
+import clsx from "clsx";
+
 import * as styles from "./Alert.css.js";
 
 export interface AlertProps extends HTMLAttributes<HTMLDivElement> {
   tone?: "info" | "success" | "warning" | "danger";
+
+  icon?: ReactNode;
 }
 
-export function Alert({ tone = "info", ...props }: AlertProps) {
-  return <div role="alert" data-tone={tone} className={styles.root} {...props} />;
+function getDefaultIcon(tone: NonNullable<AlertProps["tone"]>) {
+  switch (tone) {
+    case "success":
+      return "✓";
+
+    case "warning":
+      return "⚠";
+
+    case "danger":
+      return "⨯";
+
+    default:
+      return "ℹ";
+  }
+}
+
+export function Alert({
+  tone = "info",
+  icon,
+  children,
+  className,
+  ...props
+}: AlertProps) {
+  return (
+    <div
+      role="alert"
+      className={clsx(styles.root, styles.tones[tone], className)}
+      {...props}
+    >
+      <div className={styles.icon}>{icon ?? getDefaultIcon(tone)}</div>
+
+      <div className={styles.content}>{children}</div>
+    </div>
+  );
 }
