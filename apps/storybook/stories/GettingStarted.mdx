@@ -1,0 +1,314 @@
+{/* Getting Started Guide */}
+
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Documentation/Getting Started" />
+
+# Getting Started with Frame UI
+
+Welcome to Frame UI! This guide will help you get up and running with our component library in minutes.
+
+## Installation
+
+### Using npm
+
+```bash
+npm install @frame-ui/ui @frame-ui/theme
+```
+
+### Using yarn
+
+```bash
+yarn add @frame-ui/ui @frame-ui/theme
+```
+
+### Using pnpm
+
+```bash
+pnpm add @frame-ui/ui @frame-ui/theme
+```
+
+## Basic Setup
+
+### 1. Import the Theme
+
+Add the theme provider to your application's root:
+
+```tsx
+import { vars } from '@frame-ui/theme';
+
+export function App() {
+  return (
+    <div style={{ color: vars.color.text, background: vars.color.surface }}>
+      {/* Your app content */}
+    </div>
+  );
+}
+```
+
+### 2. Import Components
+
+Components are tree-shakable and can be imported directly:
+
+```tsx
+import { Button, Input, Card } from '@frame-ui/ui';
+
+export function LoginForm() {
+  return (
+    <Card>
+      <h1>Sign In</h1>
+      <Input placeholder="Email" />
+      <Input placeholder="Password" type="password" />
+      <Button>Sign In</Button>
+    </Card>
+  );
+}
+```
+
+## Theme Configuration
+
+### Light Mode (Default)
+
+Frame UI comes with a beautiful light theme by default. No additional configuration needed!
+
+```tsx
+// This is already the default
+import { vars } from '@frame-ui/theme';
+```
+
+### Dark Mode
+
+To enable dark mode, add the `darkTheme` class to your document root:
+
+```tsx
+import { darkTheme } from '@frame-ui/theme';
+
+// Enable dark mode
+document.documentElement.classList.add(darkTheme);
+
+// Or toggle it
+document.documentElement.classList.toggle(darkTheme);
+
+// Remove dark mode
+document.documentElement.classList.remove(darkTheme);
+```
+
+### System Theme Detection
+
+You can detect the user's system theme preference:
+
+```tsx
+import { darkTheme } from '@frame-ui/theme';
+
+const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+if (isDarkMode) {
+  document.documentElement.classList.add(darkTheme);
+}
+
+// Listen for theme changes
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+  document.documentElement.classList.toggle(darkTheme, e.matches);
+});
+```
+
+## Using Design Tokens
+
+Frame UI provides design tokens for consistent styling across your application:
+
+```tsx
+import { vars } from '@frame-ui/theme';
+
+export function StyledComponent() {
+  return (
+    <div style={{
+      padding: vars.space.lg,
+      background: vars.color.surface,
+      border: `1px solid ${vars.color.border}`,
+      borderRadius: vars.radius.md,
+      color: vars.color.text,
+      fontSize: vars.fontSize.md,
+      fontFamily: vars.font.body,
+      boxShadow: vars.shadow.md,
+    }}>
+      Content with design tokens
+    </div>
+  );
+}
+```
+
+### Available Tokens
+
+| Category | Tokens |
+|----------|--------|
+| **Colors** | `text`, `textMuted`, `surface`, `surfaceSecondary`, `border`, `borderStrong`, `primary`, `primaryHover`, `focusRing` |
+| **Spacing** | `xs` (4px), `sm` (8px), `md` (12px), `lg` (16px), `xl` (24px) |
+| **Radius** | `sm` (8px), `md` (12px), `lg` (16px) |
+| **Font** | `body` (Inter, sans-serif) |
+| **Font Size** | `xs` (12px), `sm` (14px), `md` (16px), `lg` (18px), `xl` (20px) |
+| **Shadow** | `sm`, `md` |
+| **Transition** | `fast` (150ms), `normal` (250ms) |
+
+## Common Patterns
+
+### Form Input
+
+```tsx
+import { Input, Label, Field } from '@frame-ui/ui';
+
+export function EmailInput() {
+  return (
+    <Field>
+      <Label htmlFor="email">Email Address</Label>
+      <Input
+        id="email"
+        type="email"
+        placeholder="you@example.com"
+        aria-describedby="email-help"
+      />
+      <p id="email-help" style={{ fontSize: '12px', color: '#666' }}>
+        We'll never share your email.
+      </p>
+    </Field>
+  );
+}
+```
+
+### Button States
+
+```tsx
+import { Button } from '@frame-ui/ui';
+import { useState } from 'react';
+
+export function ButtonStates() {
+  const [isLoading, setIsLoading] = useState(false);
+
+  return (
+    <div>
+      <Button>Default</Button>
+      <Button variant="secondary">Secondary</Button>
+      <Button disabled>Disabled</Button>
+    </div>
+  );
+}
+```
+
+### Card Layout
+
+```tsx
+import { Card } from '@frame-ui/ui';
+import { vars } from '@frame-ui/theme';
+
+export function ProductCard() {
+  return (
+    <Card style={{ maxWidth: '300px' }}>
+      <div style={{ marginBottom: vars.space.lg }}>
+        <h2>Product Name</h2>
+        <p style={{ color: vars.color.textMuted }}>
+          Product description goes here
+        </p>
+      </div>
+      <div style={{
+        display: 'flex',
+        gap: vars.space.md,
+      }}>
+        <button>Learn More</button>
+        <button>Add to Cart</button>
+      </div>
+    </Card>
+  );
+}
+```
+
+## TypeScript Support
+
+Frame UI is built with TypeScript and provides excellent type support:
+
+```tsx
+import { Button, ButtonProps } from '@frame-ui/ui';
+
+// Component props are fully typed
+const MyButton: React.FC<ButtonProps> = (props) => (
+  <Button {...props} />
+);
+
+// TypeScript will error if you use invalid props
+<Button invalid="prop" /> // ❌ Error
+```
+
+## Performance Optimization
+
+### Code Splitting
+
+Components are tree-shakable, so only import what you need:
+
+```tsx
+// ✅ Good - only Button is bundled
+import { Button } from '@frame-ui/ui';
+
+// ❌ Avoid - imports entire library
+import * as UI from '@frame-ui/ui';
+```
+
+### Dynamic Imports
+
+For large applications, consider code splitting:
+
+```tsx
+import { lazy } from 'react';
+
+const LazyButton = lazy(() => import('@frame-ui/ui').then(m => ({ default: m.Button })));
+```
+
+### Vanilla Extract CSS
+
+Frame UI uses Vanilla Extract CSS which is extracted to static CSS at build time:
+
+- Zero runtime overhead
+- Complete type safety
+- Automatic critical CSS extraction
+- No style-in-JS runtime
+
+## Browser Support
+
+Frame UI supports all modern browsers:
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+
+## Accessibility
+
+All Frame UI components are built with accessibility in mind:
+
+- WCAG 2.1 AA compliant
+- Full keyboard navigation
+- Screen reader support
+- ARIA labels and descriptions
+- High contrast mode support
+- Focus management
+
+## Getting Help
+
+### Documentation
+
+- [Component Library](/?path=/story/home)
+- [API Reference](/?path=/docs/components)
+- [Design Tokens](/?path=/docs/design-tokens)
+
+### Community
+
+- GitHub Issues: [Report bugs or request features](https://github.com/anomalyco/frame-ui/issues)
+- Discussions: [Ask questions and share ideas](https://github.com/anomalyco/frame-ui/discussions)
+
+## Next Steps
+
+1. **Explore Components**: Browse the [Component Library](/?path=/story/home) to see all available components
+2. **Read the Docs**: Check out detailed documentation for each component
+3. **Build Something**: Start integrating Frame UI into your project
+4. **Share Feedback**: Let us know what you think!
+
+---
+
+Happy building! 🚀

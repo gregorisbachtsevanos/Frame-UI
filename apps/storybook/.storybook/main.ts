@@ -8,7 +8,11 @@ const config: StorybookConfig = {
     options: {},
   },
 
-  stories: ["../../../packages/ui/src/**/*.stories.@(ts|tsx|mdx)"],
+  stories: [
+    // Load the Home/Welcome page first as default
+    "../stories/**/*.mdx",
+    "../../../packages/ui/src/**/*.stories.@(ts|tsx|mdx)",
+  ],
 
   addons: [
     "@storybook/addon-essentials",

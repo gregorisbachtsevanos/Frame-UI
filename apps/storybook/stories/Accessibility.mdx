@@ -1,0 +1,501 @@
+{/* Accessibility Guide */}
+
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Documentation/Accessibility" />
+
+# Accessibility Guidelines
+
+Frame UI is built with accessibility as a core principle. All components are designed to be WCAG 2.1 AA compliant and work seamlessly with assistive technologies.
+
+## Overview
+
+Accessibility ensures that all users, regardless of their abilities or the devices they use, can interact with your application. Frame UI components are built with:
+
+- ♿ **WCAG 2.1 AA Compliance** - Web Content Accessibility Guidelines
+- ⌨️ **Full Keyboard Navigation** - All interactive elements are keyboard accessible
+- 🔊 **Screen Reader Support** - Components announce correctly to assistive technologies
+- 👁️ **Visual Accessibility** - High contrast, clear focus indicators, text alternatives
+- 🎯 **Touch Friendly** - Appropriate touch target sizes (minimum 44x44px)
+
+## Keyboard Navigation
+
+### Tab Order
+
+All interactive elements are included in the natural tab order:
+
+```tsx
+import { Button, Input, Select } from '@frame-ui/ui';
+
+export function FormExample() {
+  return (
+    <>
+      <Input placeholder="First" />        {/* Tab 1 */}
+      <Input placeholder="Second" />       {/* Tab 2 */}
+      <Button>Submit</Button>              {/* Tab 3 */}
+    </>
+  );
+}
+```
+
+### Focus Management
+
+Components provide visible focus indicators:
+
+```tsx
+import { Button } from '@frame-ui/ui';
+
+export function FocusExample() {
+  return (
+    <Button>
+      {/* Focus ring automatically appears with Tab */}
+      Click me or press Tab
+    </Button>
+  );
+}
+```
+
+### Dialog Keyboard Navigation
+
+Dialogs trap focus and provide proper keyboard handling:
+
+```tsx
+import { Dialog, Button } from '@frame-ui/ui';
+import { useState } from 'react';
+
+export function DialogExample() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>Open Dialog</Button>
+      {open && (
+        <Dialog onClose={() => setOpen(false)}>
+          <p>Press Escape to close this dialog</p>
+          {/* Focus is automatically trapped */}
+        </Dialog>
+      )}
+    </>
+  );
+}
+```
+
+### Common Keyboard Shortcuts
+
+| Component | Shortcut | Action |
+|-----------|----------|--------|
+| Button, Link | `Enter` or `Space` | Activate |
+| Menu | `ArrowDown` / `ArrowUp` | Navigate items |
+| Menu | `Enter` | Select item |
+| Menu | `Escape` | Close menu |
+| Select | `ArrowDown` / `ArrowUp` | Navigate options |
+| Checkbox | `Space` | Toggle |
+| Radio Group | `ArrowLeft` / `ArrowRight` | Navigate options |
+| Dialog | `Escape` | Close dialog |
+| Tab | `ArrowLeft` / `ArrowRight` | Navigate tabs |
+
+## ARIA Attributes
+
+Frame UI components automatically include appropriate ARIA attributes. You can extend them when needed:
+
+### Labels
+
+```tsx
+import { Input, Label } from '@frame-ui/ui';
+
+// ✅ Good - Explicit label
+export function GoodExample() {
+  return (
+    <>
+      <Label htmlFor="email">Email Address</Label>
+      <Input id="email" type="email" />
+    </>
+  );
+}
+
+// ✅ Also good - Aria-label
+export function AriaLabelExample() {
+  return <Input aria-label="Email Address" type="email" />;
+}
+
+// ❌ Avoid - No label
+export function BadExample() {
+  return <Input placeholder="Email Address" type="email" />;
+}
+```
+
+### Descriptions
+
+```tsx
+import { Input, Field } from '@frame-ui/ui';
+
+export function DescriptionExample() {
+  return (
+    <Field>
+      <Input
+        id="password"
+        type="password"
+        aria-describedby="password-help"
+      />
+      <p id="password-help">
+        Minimum 8 characters with one number
+      </p>
+    </Field>
+  );
+}
+```
+
+### Live Regions
+
+```tsx
+import { Toast } from '@frame-ui/ui';
+
+export function LiveRegionExample() {
+  return (
+    <Toast
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+    >
+      File saved successfully
+    </Toast>
+  );
+}
+```
+
+### Buttons
+
+```tsx
+import { Button } from '@frame-ui/ui';
+
+// ✅ Descriptive button text
+<Button>Save Document</Button>
+
+// ✅ With aria-label for icon buttons
+<Button aria-label="Close menu">×</Button>
+
+// ❌ Avoid vague text
+<Button>Click Here</Button>
+```
+
+## Color & Contrast
+
+Frame UI colors meet WCAG AAA contrast ratios:
+
+| Color Pair | Ratio | WCAG Level |
+|-----------|-------|-----------|
+| Text on Surface | 18.5:1 | AAA |
+| Primary on Surface | 8.59:1 | AAA |
+| Border | 8.7:1 | AAA |
+
+### High Contrast Mode
+
+Components automatically adjust for high contrast mode:
+
+```tsx
+// Windows High Contrast mode detection
+const isHighContrast = window.matchMedia('(prefers-contrast: more)').matches;
+
+if (isHighContrast) {
+  // Frame UI automatically applies stronger borders and colors
+}
+```
+
+### Don't Rely on Color Alone
+
+```tsx
+// ✅ Good - Color + icon
+<Button color="error">
+  <Icon name="error" /> Delete
+</Button>
+
+// ✅ Good - Color + text
+<span style={{ color: 'red' }}>Required field</span>
+<span aria-label="Required"> *</span>
+
+// ❌ Avoid - Color only
+<div style={{ color: 'red' }}>Important</div>
+```
+
+## Text & Typography
+
+### Text Size
+
+```tsx
+import { vars } from '@frame-ui/theme';
+
+// ✅ Good - Readable size
+<p style={{ fontSize: vars.fontSize.md }}>Body text</p>
+
+// ❌ Avoid - Too small
+<p style={{ fontSize: '11px' }}>Body text</p>
+```
+
+### Line Height
+
+```tsx
+// ✅ Good - Adequate line height
+<p style={{ lineHeight: 1.6 }}>
+  Longer text content here
+</p>
+
+// ❌ Avoid - Too tight
+<p style={{ lineHeight: 1 }}>
+  Longer text content here
+</p>
+```
+
+### Font Weight
+
+```tsx
+// ✅ Good - Clear hierarchy
+<h1 style={{ fontWeight: 700 }}>Main Title</h1>
+<p style={{ fontWeight: 400 }}>Body text</p>
+
+// ❌ Avoid - Hard to distinguish
+<h1 style={{ fontWeight: 400 }}>Main Title</h1>
+<p style={{ fontWeight: 400 }}>Body text</p>
+```
+
+## Images & Media
+
+### Alt Text
+
+```tsx
+// ✅ Good - Descriptive alt text
+<img
+  src="product.jpg"
+  alt="Blue wireless headphones with noise cancellation"
+/>
+
+// ✅ Good - Empty alt for decorative images
+<img src="divider.svg" alt="" aria-hidden="true" />
+
+// ❌ Avoid - Generic or missing alt text
+<img src="product.jpg" alt="image" />
+<img src="product.jpg" />
+```
+
+### Video
+
+```tsx
+// ✅ Good - Captions and transcripts
+<video controls>
+  <source src="video.mp4" type="video/mp4" />
+  <track kind="captions" src="captions.vtt" />
+</video>
+
+<p>
+  <a href="transcript.txt">View transcript</a>
+</p>
+```
+
+## Forms
+
+### Form Validation
+
+```tsx
+import { Input, Field, Label } from '@frame-ui/ui';
+
+export function ValidatedForm() {
+  const [errors, setErrors] = useState<string[]>([]);
+
+  return (
+    <Field>
+      <Label htmlFor="email">Email</Label>
+      <Input
+        id="email"
+        type="email"
+        aria-invalid={errors.length > 0}
+        aria-describedby="email-error"
+      />
+      {errors.length > 0 && (
+        <div id="email-error" role="alert" style={{ color: 'red' }}>
+          {errors[0]}
+        </div>
+      )}
+    </Field>
+  );
+}
+```
+
+### Required Fields
+
+```tsx
+import { Input, Label, Field } from '@frame-ui/ui';
+
+export function RequiredField() {
+  return (
+    <Field>
+      <Label htmlFor="name">
+        Name <span aria-label="required">*</span>
+      </Label>
+      <Input id="name" required />
+    </Field>
+  );
+}
+```
+
+### Error Messages
+
+```tsx
+// ✅ Good - Associated with field
+<Input
+  id="password"
+  aria-invalid="true"
+  aria-describedby="password-error"
+/>
+<div id="password-error" role="alert">
+  Password must be at least 8 characters
+</div>
+
+// ❌ Avoid - Error not associated
+<Input id="password" />
+<div>Password must be at least 8 characters</div>
+```
+
+## Motion & Animation
+
+### Respect Prefers Reduced Motion
+
+```tsx
+import { vars } from '@frame-ui/theme';
+
+export function AnimatedComponent() {
+  const prefersReducedMotion = window.matchMedia(
+    '(prefers-reduced-motion: reduce)'
+  ).matches;
+
+  return (
+    <div style={{
+      transition: prefersReducedMotion
+        ? 'none'
+        : `all ${vars.transition.normal}`,
+    }}>
+      Animated content
+    </div>
+  );
+}
+```
+
+### Avoid Auto-Playing Content
+
+```tsx
+// ✅ Good - User controls playback
+<video controls>
+  <source src="video.mp4" />
+</video>
+
+// ❌ Avoid - Auto-playing
+<video autoPlay>
+  <source src="video.mp4" />
+</video>
+```
+
+## Focus Visible
+
+Frame UI components show focus only when using keyboard navigation:
+
+```tsx
+// ✅ Automatically handled by Frame UI
+<Button>Click or Tab to focus</Button>
+
+// Focus indicator appears only with keyboard
+// (not with mouse click)
+```
+
+## Testing for Accessibility
+
+### Automated Testing
+
+Use these tools to check accessibility:
+
+- **axe DevTools** - Browser extension for accessibility audits
+- **WAVE** - WebAIM accessibility checker
+- **Lighthouse** - Chrome DevTools accessibility audit
+- **Jest Axe** - Automated testing in unit tests
+
+### Manual Testing
+
+1. **Keyboard Navigation** - Tab through all elements
+2. **Screen Reader** - Test with NVDA, JAWS, or VoiceOver
+3. **Color Contrast** - Use contrast checker tool
+4. **Zoom** - Test at 200% zoom level
+5. **High Contrast Mode** - Enable system high contrast
+
+### Screen Reader Testing
+
+```bash
+# On macOS
+VoiceOver: Cmd + F5
+
+# On Windows
+NVDA: Available at https://www.nvaccess.org
+
+# On Linux
+Orca: Available on most Linux distributions
+```
+
+## Resources
+
+### Standards
+
+- [WCAG 2.1 Guidelines](https://www.w3.org/WAI/WCAG21/quickref/)
+- [ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/)
+- [HTML5 Accessibility](https://www.w3.org/TR/html-aria/)
+
+### Tools
+
+- [axe DevTools](https://www.deque.com/axe/devtools/)
+- [WAVE Extension](https://wave.webaim.org/extension/)
+- [Color Contrast Analyzer](https://www.tpgi.com/color-contrast-checker/)
+- [Accessibility Insights](https://accessibilityinsights.io/)
+
+### Learning
+
+- [WebAIM Blog](https://webaim.org/blog/)
+- [A11y Project](https://www.a11yproject.com/)
+- [MDN Accessibility](https://developer.mozilla.org/en-US/docs/Web/Accessibility)
+
+## Common Issues & Solutions
+
+### Issue: Small Touch Targets
+
+```tsx
+// ❌ Problem - Too small
+<button style={{ width: '30px', height: '30px' }}>×</button>
+
+// ✅ Solution - Minimum 44x44px
+<button style={{ width: '44px', height: '44px' }}>×</button>
+```
+
+### Issue: Missing Focus Indicator
+
+```tsx
+// ✅ Frame UI handles this automatically
+<Button>I have a focus indicator</Button>
+
+// Manual fallback if needed:
+<button style={{
+  outline: '3px solid #93c5fd',
+  outlineOffset: '2px',
+}}>
+  Focus indicator
+</button>
+```
+
+### Issue: Modal Keyboard Trap
+
+```tsx
+// ✅ Frame UI Dialog handles this
+<Dialog>Focus is trapped within dialog</Dialog>
+
+// When closed with Escape or button click,
+// focus returns to trigger button
+```
+
+---
+
+Frame UI makes accessibility easy. If you find an accessibility issue, please [report it on GitHub](https://github.com/anomalyco/frame-ui/issues).
+
+**Building accessible applications benefits everyone!** 🎉

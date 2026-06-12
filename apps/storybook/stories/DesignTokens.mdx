@@ -1,0 +1,417 @@
+{/* Design Tokens Documentation */}
+
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Documentation/Design Tokens" />
+
+# Design System Tokens
+
+Frame UI uses a comprehensive set of design tokens to ensure consistency across all components and your entire application.
+
+## Overview
+
+Design tokens are the building blocks of the Frame UI design system. They define colors, spacing, typography, shadows, and transitions used throughout the library.
+
+```tsx
+import { vars } from '@frame-ui/theme';
+
+// Access design tokens
+const color = vars.color.primary;      // #2563eb
+const space = vars.space.lg;           // 16px
+const radius = vars.radius.md;         // 12px
+const shadow = vars.shadow.md;         // 0 2px 10px rgba(...)
+```
+
+## Color Tokens
+
+### Primary Colors
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '16px', marginBottom: '32px' }}>
+
+<div>
+  <div style={{ width: '100%', height: '80px', background: '#2563eb', borderRadius: '8px', marginBottom: '8px' }} />
+  <div style={{ fontWeight: 600, marginBottom: '4px' }}>Primary</div>
+  <code style={{ fontSize: '11px' }}>#2563eb</code>
+  <p style={{ fontSize: '12px', color: '#666', marginTop: '4px' }}>vars.color.primary</p>
+</div>
+
+<div>
+  <div style={{ width: '100%', height: '80px', background: '#1d4ed8', borderRadius: '8px', marginBottom: '8px' }} />
+  <div style={{ fontWeight: 600, marginBottom: '4px' }}>Primary Hover</div>
+  <code style={{ fontSize: '11px' }}>#1d4ed8</code>
+  <p style={{ fontSize: '12px', color: '#666', marginTop: '4px' }}>vars.color.primaryHover</p>
+</div>
+
+</div>
+
+### Text Colors
+
+<div style={{ display: 'grid', gap: '12px', marginBottom: '32px' }}>
+
+<div style={{ padding: '16px', border: '1px solid #e2e8f0', borderRadius: '8px', display: 'flex', gap: '16px', alignItems: 'center' }}>
+  <div style={{ width: '60px', height: '60px', background: '#0f172a', borderRadius: '8px' }} />
+  <div>
+    <div style={{ fontWeight: 600, marginBottom: '4px' }}>Text</div>
+    <code style={{ fontSize: '11px' }}>#0f172a</code>
+    <p style={{ fontSize: '12px', color: '#666', marginTop: '4px' }}>Primary text color</p>
+    <p style={{ fontSize: '12px', color: '#666' }}>vars.color.text</p>
+  </div>
+</div>
+
+<div style={{ padding: '16px', border: '1px solid #e2e8f0', borderRadius: '8px', display: 'flex', gap: '16px', alignItems: 'center' }}>
+  <div style={{ width: '60px', height: '60px', background: '#475569', borderRadius: '8px' }} />
+  <div>
+    <div style={{ fontWeight: 600, marginBottom: '4px' }}>Text Muted</div>
+    <code style={{ fontSize: '11px' }}>#475569</code>
+    <p style={{ fontSize: '12px', color: '#666', marginTop: '4px' }}>Secondary/muted text</p>
+    <p style={{ fontSize: '12px', color: '#666' }}>vars.color.textMuted</p>
+  </div>
+</div>
+
+</div>
+
+### Surface Colors
+
+<div style={{ display: 'grid', gap: '12px', marginBottom: '32px' }}>
+
+<div style={{ padding: '16px', border: '2px solid #e2e8f0', borderRadius: '8px', display: 'flex', gap: '16px', alignItems: 'center' }}>
+  <div style={{ width: '60px', height: '60px', background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '8px' }} />
+  <div>
+    <div style={{ fontWeight: 600, marginBottom: '4px' }}>Surface</div>
+    <code style={{ fontSize: '11px' }}>#ffffff</code>
+    <p style={{ fontSize: '12px', color: '#666', marginTop: '4px' }}>Primary background color</p>
+    <p style={{ fontSize: '12px', color: '#666' }}>vars.color.surface</p>
+  </div>
+</div>
+
+<div style={{ padding: '16px', border: '1px solid #e2e8f0', borderRadius: '8px', display: 'flex', gap: '16px', alignItems: 'center' }}>
+  <div style={{ width: '60px', height: '60px', background: '#f8fafc', borderRadius: '8px' }} />
+  <div>
+    <div style={{ fontWeight: 600, marginBottom: '4px' }}>Surface Secondary</div>
+    <code style={{ fontSize: '11px' }}>#f8fafc</code>
+    <p style={{ fontSize: '12px', color: '#666', marginTop: '4px' }}>Secondary background</p>
+    <p style={{ fontSize: '12px', color: '#666' }}>vars.color.surfaceSecondary</p>
+  </div>
+</div>
+
+</div>
+
+### Border Colors
+
+<div style={{ display: 'grid', gap: '12px', marginBottom: '32px' }}>
+
+<div style={{ padding: '16px', border: '1px solid #e2e8f0', borderRadius: '8px', display: 'flex', gap: '16px', alignItems: 'center' }}>
+  <div style={{ width: '60px', height: '60px', border: '2px solid #e2e8f0', borderRadius: '8px' }} />
+  <div>
+    <div style={{ fontWeight: 600, marginBottom: '4px' }}>Border</div>
+    <code style={{ fontSize: '11px' }}>#e2e8f0</code>
+    <p style={{ fontSize: '12px', color: '#666', marginTop: '4px' }}>Default border color</p>
+    <p style={{ fontSize: '12px', color: '#666' }}>vars.color.border</p>
+  </div>
+</div>
+
+<div style={{ padding: '16px', border: '1px solid #e2e8f0', borderRadius: '8px', display: 'flex', gap: '16px', alignItems: 'center' }}>
+  <div style={{ width: '60px', height: '60px', border: '2px solid #cbd5e1', borderRadius: '8px' }} />
+  <div>
+    <div style={{ fontWeight: 600, marginBottom: '4px' }}>Border Strong</div>
+    <code style={{ fontSize: '11px' }}>#cbd5e1</code>
+    <p style={{ fontSize: '12px', color: '#666', marginTop: '4px' }}>Emphasized border</p>
+    <p style={{ fontSize: '12px', color: '#666' }}>vars.color.borderStrong</p>
+  </div>
+</div>
+
+</div>
+
+### Interactive Colors
+
+<div style={{ display: 'grid', gap: '12px', marginBottom: '32px' }}>
+
+<div style={{ padding: '16px', border: '1px solid #e2e8f0', borderRadius: '8px', display: 'flex', gap: '16px', alignItems: 'center' }}>
+  <div style={{ width: '60px', height: '60px', background: '#93c5fd', borderRadius: '8px' }} />
+  <div>
+    <div style={{ fontWeight: 600, marginBottom: '4px' }}>Focus Ring</div>
+    <code style={{ fontSize: '11px' }}>#93c5fd</code>
+    <p style={{ fontSize: '12px', color: '#666', marginTop: '4px' }}>Focus indicator color</p>
+    <p style={{ fontSize: '12px', color: '#666' }}>vars.color.focusRing</p>
+  </div>
+</div>
+
+</div>
+
+## Spacing Scale
+
+Frame UI uses a consistent 4px-based spacing scale:
+
+<div style={{ marginBottom: '32px' }}>
+
+```tsx
+vars.space.xs   // 4px
+vars.space.sm   // 8px
+vars.space.md   // 12px
+vars.space.lg   // 16px
+vars.space.xl   // 24px
+```
+
+</div>
+
+### Visual Reference
+
+<div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '32px' }}>
+
+<div>
+  <div style={{ fontSize: '12px', fontWeight: 600, marginBottom: '4px' }}>xs (4px)</div>
+  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+    <div style={{ width: '4px', height: '40px', background: '#2563eb', borderRadius: '2px' }} />
+    <span style={{ fontSize: '12px', color: '#666' }}>Minimal spacing, tight gaps</span>
+  </div>
+</div>
+
+<div>
+  <div style={{ fontSize: '12px', fontWeight: 600, marginBottom: '4px' }}>sm (8px)</div>
+  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+    <div style={{ width: '8px', height: '40px', background: '#2563eb', borderRadius: '2px' }} />
+    <span style={{ fontSize: '12px', color: '#666' }}>Small components, icon spacing</span>
+  </div>
+</div>
+
+<div>
+  <div style={{ fontSize: '12px', fontWeight: 600, marginBottom: '4px' }}>md (12px)</div>
+  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+    <div style={{ width: '12px', height: '40px', background: '#2563eb', borderRadius: '2px' }} />
+    <span style={{ fontSize: '12px', color: '#666' }}>Standard padding and gaps</span>
+  </div>
+</div>
+
+<div>
+  <div style={{ fontSize: '12px', fontWeight: 600, marginBottom: '4px' }}>lg (16px)</div>
+  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+    <div style={{ width: '16px', height: '40px', background: '#2563eb', borderRadius: '2px' }} />
+    <span style={{ fontSize: '12px', color: '#666' }}>Component padding, margins</span>
+  </div>
+</div>
+
+<div>
+  <div style={{ fontSize: '12px', fontWeight: 600, marginBottom: '4px' }}>xl (24px)</div>
+  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+    <div style={{ width: '24px', height: '40px', background: '#2563eb', borderRadius: '2px' }} />
+    <span style={{ fontSize: '12px', color: '#666' }}>Section spacing, large gaps</span>
+  </div>
+</div>
+
+</div>
+
+## Border Radius
+
+Frame UI provides three border radius values for consistent corner styling:
+
+```tsx
+vars.radius.sm   // 8px
+vars.radius.md   // 12px
+vars.radius.lg   // 16px
+```
+
+### Usage Examples
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', marginBottom: '32px' }}>
+
+<div style={{ textAlign: 'center' }}>
+  <div style={{ width: '60px', height: '60px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', margin: '0 auto 8px' }} />
+  <div style={{ fontSize: '12px', fontWeight: 600 }}>Small (8px)</div>
+  <p style={{ fontSize: '11px', color: '#666', margin: '4px 0' }}>Buttons, inputs</p>
+</div>
+
+<div style={{ textAlign: 'center' }}>
+  <div style={{ width: '60px', height: '60px', background: '#f8fafc', borderRadius: '12px', border: '1px solid #e2e8f0', margin: '0 auto 8px' }} />
+  <div style={{ fontSize: '12px', fontWeight: 600 }}>Medium (12px)</div>
+  <p style={{ fontSize: '11px', color: '#666', margin: '4px 0' }}>Cards, modals</p>
+</div>
+
+<div style={{ textAlign: 'center' }}>
+  <div style={{ width: '60px', height: '60px', background: '#f8fafc', borderRadius: '16px', border: '1px solid #e2e8f0', margin: '0 auto 8px' }} />
+  <div style={{ fontSize: '12px', fontWeight: 600 }}>Large (16px)</div>
+  <p style={{ fontSize: '11px', color: '#666', margin: '4px 0' }}>Sections, containers</p>
+</div>
+
+</div>
+
+## Typography
+
+### Font Family
+
+```tsx
+vars.font.body   // 'Inter, sans-serif'
+```
+
+### Font Sizes
+
+```tsx
+vars.fontSize.xs   // 12px - Small labels, hints
+vars.fontSize.sm   // 14px - Secondary text, captions
+vars.fontSize.md   // 16px - Body text (default)
+vars.fontSize.lg   // 18px - Subheadings
+vars.fontSize.xl   // 20px - Headings
+```
+
+### Usage Examples
+
+<div style={{ marginBottom: '32px' }}>
+
+```tsx
+import { vars } from '@frame-ui/theme';
+
+// Small label
+<span style={{ fontSize: vars.fontSize.xs }}>Helper text</span>
+
+// Body text
+<p style={{ fontSize: vars.fontSize.md }}>Paragraph content</p>
+
+// Large heading
+<h1 style={{ fontSize: vars.fontSize.xl }}>Main title</h1>
+```
+
+</div>
+
+## Shadows
+
+Frame UI provides two shadow depths for elevation:
+
+```tsx
+vars.shadow.sm   // 0 1px 2px rgba(15,23,42,0.06)
+vars.shadow.md   // 0 2px 10px rgba(15,23,42,0.08)
+```
+
+### Visual Examples
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '24px', marginBottom: '32px' }}>
+
+<div style={{ textAlign: 'center' }}>
+  <div style={{ width: '100%', padding: '20px', borderRadius: '8px', background: '#ffffff', boxShadow: '0 1px 2px rgba(15,23,42,0.06)', marginBottom: '8px' }}>
+    Small Shadow
+  </div>
+  <code style={{ fontSize: '11px' }}>vars.shadow.sm</code>
+  <p style={{ fontSize: '11px', color: '#666', marginTop: '4px' }}>Subtle elevation</p>
+</div>
+
+<div style={{ textAlign: 'center' }}>
+  <div style={{ width: '100%', padding: '20px', borderRadius: '8px', background: '#ffffff', boxShadow: '0 2px 10px rgba(15,23,42,0.08)', marginBottom: '8px' }}>
+    Medium Shadow
+  </div>
+  <code style={{ fontSize: '11px' }}>vars.shadow.md</code>
+  <p style={{ fontSize: '11px', color: '#666', marginTop: '4px' }}>Strong elevation</p>
+</div>
+
+</div>
+
+## Transitions
+
+Frame UI defines two transition speeds:
+
+```tsx
+vars.transition.fast   // 150ms ease
+vars.transition.normal // 250ms ease
+```
+
+### Usage Examples
+
+```tsx
+import { vars } from '@frame-ui/theme';
+
+// Fast interaction feedback
+style={{
+  transition: `color ${vars.transition.fast}`,
+}}
+
+// Smooth layout changes
+style={{
+  transition: `all ${vars.transition.normal}`,
+}}
+```
+
+## Dark Mode
+
+All tokens automatically adjust when dark mode is enabled:
+
+```tsx
+import { darkTheme } from '@frame-ui/theme';
+
+// Enable dark mode
+document.documentElement.classList.add(darkTheme);
+
+// In dark mode, tokens update automatically:
+// text: #f1f5f9 (light)
+// surface: #0f172a (dark)
+// border: #334155 (darker)
+```
+
+## Best Practices
+
+### 1. Always Use Tokens
+
+```tsx
+// ✅ Good - Using design tokens
+const color = vars.color.primary;
+const space = vars.space.lg;
+
+// ❌ Avoid - Hardcoded values
+const color = '#2563eb';
+const space = '16px';
+```
+
+### 2. Consistent Spacing
+
+```tsx
+// ✅ Good - Consistent scale
+padding: vars.space.lg;
+margin: vars.space.md;
+gap: vars.space.sm;
+
+// ❌ Avoid - Mixed spacing
+padding: '15px';
+margin: '10px';
+gap: '7px';
+```
+
+### 3. Semantic Color Usage
+
+```tsx
+// ✅ Good - Semantic naming
+color: vars.color.text;
+background: vars.color.surface;
+
+// ❌ Avoid - Arbitrary colors
+color: '#0f172a';
+background: '#ffffff';
+```
+
+### 4. CSS-in-JS Usage
+
+```tsx
+// ✅ Good - Using inline styles
+<div style={{
+  padding: vars.space.lg,
+  color: vars.color.text,
+}}>
+  Content
+</div>
+
+// ✅ Also good - Using CSS classes with Vanilla Extract
+import * as styles from './Component.css';
+
+// ❌ Avoid - Hardcoded CSS
+<div style={{ padding: '16px', color: '#0f172a' }}>
+  Content
+</div>
+```
+
+## Customization
+
+To customize design tokens for your project:
+
+1. Fork the `@frame-ui/theme` package
+2. Update the token values in `packages/theme/src/tokens.css.ts`
+3. Update dark mode overrides in `packages/theme/src/dark.css.ts`
+4. Rebuild and publish your custom version
+
+---
+
+For more information, see the [Getting Started guide](/docs/getting-started).

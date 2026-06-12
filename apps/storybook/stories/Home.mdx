@@ -1,0 +1,590 @@
+{/* Frame UI Design System - MDX Home Page */}
+
+import { Meta, ColorPalette, ColorItem, Unstyled } from '@storybook/blocks';
+
+<Meta title="Welcome/Home" />
+
+{/* Hero Section */}
+
+<div style={{
+  background: 'linear-gradient(135deg, #2563eb 0%, #1e40af 100%)',
+  color: '#ffffff',
+  padding: '60px 40px',
+  borderRadius: '16px',
+  marginBottom: '40px',
+  textAlign: 'center',
+  minHeight: '350px',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+}}>
+  <h1 style={{ fontSize: '48px', fontWeight: 700, marginBottom: '16px' }}>
+    Frame UI
+  </h1>
+  <p style={{ fontSize: '18px', opacity: 0.95, marginBottom: '24px', maxWidth: '600px' }}>
+    A modern, accessible React component library built with TypeScript and Vanilla Extract CSS
+  </p>
+  <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', justifyContent: 'center' }}>
+    <a href="?path=/story/components--button" style={{
+      padding: '12px 24px',
+      background: '#ffffff',
+      color: '#2563eb',
+      borderRadius: '12px',
+      textDecoration: 'none',
+      fontWeight: 600,
+      border: 'none',
+      cursor: 'pointer',
+      transition: 'opacity 150ms ease',
+    }}>
+      📖 View Components
+    </a>
+    <a href="https://github.com" style={{
+      padding: '12px 24px',
+      background: 'transparent',
+      color: '#ffffff',
+      borderRadius: '12px',
+      textDecoration: 'none',
+      fontWeight: 600,
+      border: '2px solid #ffffff',
+      cursor: 'pointer',
+      transition: 'background 150ms ease',
+    }}>
+      ⭐ GitHub
+    </a>
+  </div>
+  <div style={{ marginTop: '24px', opacity: 0.9, fontSize: '14px' }}>
+    v1.0.0
+  </div>
+</div>
+
+{/* Quick Start Section */}
+
+## 🚀 Quick Start
+
+Frame UI makes it easy to build consistent, accessible user interfaces. Get started in minutes with our comprehensive component library.
+
+### Installation
+
+Install Frame UI using your preferred package manager:
+
+```bash
+npm install @frame-ui/ui @frame-ui/theme
+# or
+yarn add @frame-ui/ui @frame-ui/theme
+# or
+pnpm add @frame-ui/ui @frame-ui/theme
+```
+
+### Basic Usage
+
+Import components directly into your React application:
+
+```tsx
+import { Button, Card, Input } from '@frame-ui/ui';
+import { vars } from '@frame-ui/theme';
+
+export function App() {
+  return (
+    <Card>
+      <h1>Welcome to Frame UI</h1>
+      <Input placeholder="Enter your name" />
+      <Button>Submit</Button>
+    </Card>
+  );
+}
+```
+
+### Theming
+
+Frame UI supports both light and dark themes out of the box:
+
+```tsx
+import { darkTheme } from '@frame-ui/theme';
+
+// Add dark mode support
+document.documentElement.classList.toggle(darkTheme);
+```
+
+---
+
+## 📦 Component Categories
+
+Frame UI organizes components into logical categories for easy discovery and use.
+
+<div style={{
+  display: 'grid',
+  gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+  gap: '20px',
+  marginBottom: '40px',
+}}>
+
+<div style={{
+  padding: '20px',
+  border: '1px solid #e2e8f0',
+  borderRadius: '12px',
+  background: '#ffffff',
+  transition: 'all 250ms ease',
+  ':hover': { boxShadow: '0 2px 10px rgba(15,23,42,0.08)' },
+}}>
+  <div style={{ fontSize: '24px', marginBottom: '12px' }}>🎨</div>
+  <h3 style={{ fontSize: '18px', fontWeight: 600, marginBottom: '8px' }}>Display</h3>
+  <p style={{ fontSize: '14px', color: '#475569', marginBottom: '12px' }}>
+    Components for visual hierarchy and typography
+  </p>
+  <p style={{ fontSize: '12px', color: '#666' }}>
+    Typography, Badge, Avatar, Kbd, Skeleton, Spinner
+  </p>
+</div>
+
+<div style={{
+  padding: '20px',
+  border: '1px solid #e2e8f0',
+  borderRadius: '12px',
+  background: '#ffffff',
+  transition: 'all 250ms ease',
+}}>
+  <div style={{ fontSize: '24px', marginBottom: '12px' }}>🔘</div>
+  <h3 style={{ fontSize: '18px', fontWeight: 600, marginBottom: '8px' }}>Forms & Inputs</h3>
+  <p style={{ fontSize: '14px', color: '#475569', marginBottom: '12px' }}>
+    Form controls and input components
+  </p>
+  <p style={{ fontSize: '12px', color: '#666' }}>
+    Input, Button, Checkbox, Radio, Select, Textarea, Toggle, Switch
+  </p>
+</div>
+
+<div style={{
+  padding: '20px',
+  border: '1px solid #e2e8f0',
+  borderRadius: '12px',
+  background: '#ffffff',
+  transition: 'all 250ms ease',
+}}>
+  <div style={{ fontSize: '24px', marginBottom: '12px' }}>📊</div>
+  <h3 style={{ fontSize: '18px', fontWeight: 600, marginBottom: '8px' }}>Data Display</h3>
+  <p style={{ fontSize: '14px', color: '#475569', marginBottom: '12px' }}>
+    Components for displaying data and content
+  </p>
+  <p style={{ fontSize: '12px', color: '#666' }}>
+    Table, Card, DataTable, Calendar, Chart
+  </p>
+</div>
+
+<div style={{
+  padding: '20px',
+  border: '1px solid #e2e8f0',
+  borderRadius: '12px',
+  background: '#ffffff',
+  transition: 'all 250ms ease',
+}}>
+  <div style={{ fontSize: '24px', marginBottom: '12px' }}>🗂️</div>
+  <h3 style={{ fontSize: '18px', fontWeight: 600, marginBottom: '8px' }}>Navigation</h3>
+  <p style={{ fontSize: '14px', color: '#475569', marginBottom: '12px' }}>
+    Components for user navigation and menus
+  </p>
+  <p style={{ fontSize: '12px', color: '#666' }}>
+    Breadcrumb, Pagination, Sidebar, NavigationMenu, Tabs, DropdownMenu
+  </p>
+</div>
+
+<div style={{
+  padding: '20px',
+  border: '1px solid #e2e8f0',
+  borderRadius: '12px',
+  background: '#ffffff',
+  transition: 'all 250ms ease',
+}}>
+  <div style={{ fontSize: '24px', marginBottom: '12px' }}>💬</div>
+  <h3 style={{ fontSize: '18px', fontWeight: 600, marginBottom: '8px' }}>Feedback & Modals</h3>
+  <p style={{ fontSize: '14px', color: '#475569', marginBottom: '12px' }}>
+    Components for user feedback and interactions
+  </p>
+  <p style={{ fontSize: '12px', color: '#666' }}>
+    Alert, Dialog, AlertDialog, Toast, Popover, Tooltip
+  </p>
+</div>
+
+<div style={{
+  padding: '20px',
+  border: '1px solid #e2e8f0',
+  borderRadius: '12px',
+  background: '#ffffff',
+  transition: 'all 250ms ease',
+}}>
+  <div style={{ fontSize: '24px', marginBottom: '12px' }}>🎭</div>
+  <h3 style={{ fontSize: '18px', fontWeight: 600, marginBottom: '8px' }}>Layout & Containers</h3>
+  <p style={{ fontSize: '14px', color: '#475569', marginBottom: '12px' }}>
+    Components for organizing content
+  </p>
+  <p style={{ fontSize: '12px', color: '#666' }}>
+    Drawer, Sheet, Accordion, Collapsible, AspectRatio
+  </p>
+</div>
+
+</div>
+
+---
+
+## 🎨 Design System
+
+### Color Palette
+
+<div style={{
+  display: 'grid',
+  gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+  gap: '16px',
+  marginBottom: '40px',
+}}>
+
+<div>
+  <div style={{
+    width: '100%',
+    height: '60px',
+    background: '#2563eb',
+    borderRadius: '8px',
+    marginBottom: '8px',
+    border: '1px solid #cbd5e1',
+  }}/>
+  <div style={{ fontSize: '14px', fontWeight: 600, marginBottom: '2px' }}>Primary</div>
+  <div style={{ fontSize: '12px', color: '#666', fontFamily: 'monospace' }}>#2563eb</div>
+</div>
+
+<div>
+  <div style={{
+    width: '100%',
+    height: '60px',
+    background: '#0f172a',
+    borderRadius: '8px',
+    marginBottom: '8px',
+    border: '1px solid #cbd5e1',
+  }}/>
+  <div style={{ fontSize: '14px', fontWeight: 600, marginBottom: '2px' }}>Text</div>
+  <div style={{ fontSize: '12px', color: '#666', fontFamily: 'monospace' }}>#0f172a</div>
+</div>
+
+<div>
+  <div style={{
+    width: '100%',
+    height: '60px',
+    background: '#ffffff',
+    borderRadius: '8px',
+    marginBottom: '8px',
+    border: '2px solid #cbd5e1',
+  }}/>
+  <div style={{ fontSize: '14px', fontWeight: 600, marginBottom: '2px' }}>Surface</div>
+  <div style={{ fontSize: '12px', color: '#666', fontFamily: 'monospace' }}>#ffffff</div>
+</div>
+
+<div>
+  <div style={{
+    width: '100%',
+    height: '60px',
+    background: '#f8fafc',
+    borderRadius: '8px',
+    marginBottom: '8px',
+    border: '1px solid #cbd5e1',
+  }}/>
+  <div style={{ fontSize: '14px', fontWeight: 600, marginBottom: '2px' }}>Surface Secondary</div>
+  <div style={{ fontSize: '12px', color: '#666', fontFamily: 'monospace' }}>#f8fafc</div>
+</div>
+
+<div>
+  <div style={{
+    width: '100%',
+    height: '60px',
+    background: '#e2e8f0',
+    borderRadius: '8px',
+    marginBottom: '8px',
+    border: '1px solid #cbd5e1',
+  }}/>
+  <div style={{ fontSize: '14px', fontWeight: 600, marginBottom: '2px' }}>Border</div>
+  <div style={{ fontSize: '12px', color: '#666', fontFamily: 'monospace' }}>#e2e8f0</div>
+</div>
+
+<div>
+  <div style={{
+    width: '100%',
+    height: '60px',
+    background: '#93c5fd',
+    borderRadius: '8px',
+    marginBottom: '8px',
+    border: '1px solid #cbd5e1',
+  }}/>
+  <div style={{ fontSize: '14px', fontWeight: 600, marginBottom: '2px' }}>Focus Ring</div>
+  <div style={{ fontSize: '12px', color: '#666', fontFamily: 'monospace' }}>#93c5fd</div>
+</div>
+
+</div>
+
+### Spacing Scale
+
+Frame UI uses a consistent spacing scale for layouts and components:
+
+| Token | Value | Usage |
+|-------|-------|-------|
+| **xs** | 4px | Minimal spacing, gaps |
+| **sm** | 8px | Small components, margins |
+| **md** | 12px | Standard padding, gaps |
+| **lg** | 16px | Component padding, margins |
+| **xl** | 24px | Section margins, gaps |
+
+### Typography
+
+Frame UI uses **Inter** as the default font family with responsive font sizes:
+
+| Scale | Size | Usage |
+|-------|------|-------|
+| **xs** | 12px | Small labels, hints |
+| **sm** | 14px | Body text, secondary content |
+| **md** | 16px | Primary body text |
+| **lg** | 18px | Headings, larger text |
+| **xl** | 20px | Large headings |
+
+---
+
+## 📚 Documentation
+
+Explore comprehensive guides and API documentation:
+
+<div style={{
+  display: 'grid',
+  gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+  gap: '12px',
+  marginBottom: '40px',
+}}>
+
+<a href="?path=/docs/getting-started" style={{
+  padding: '16px',
+  borderRadius: '8px',
+  background: '#f8fafc',
+  border: '1px solid #e2e8f0',
+  textDecoration: 'none',
+  color: '#2563eb',
+  fontWeight: 500,
+  transition: 'all 150ms ease',
+  cursor: 'pointer',
+  display: 'flex',
+  alignItems: 'center',
+  gap: '8px',
+}}>
+  <span style={{ fontSize: '18px' }}>🚀</span>
+  Getting Started
+</a>
+
+<a href="?path=/docs/components" style={{
+  padding: '16px',
+  borderRadius: '8px',
+  background: '#f8fafc',
+  border: '1px solid #e2e8f0',
+  textDecoration: 'none',
+  color: '#2563eb',
+  fontWeight: 500,
+  transition: 'all 150ms ease',
+  cursor: 'pointer',
+  display: 'flex',
+  alignItems: 'center',
+  gap: '8px',
+}}>
+  <span style={{ fontSize: '18px' }}>📦</span>
+  Component API
+</a>
+
+<a href="?path=/docs/design-tokens" style={{
+  padding: '16px',
+  borderRadius: '8px',
+  background: '#f8fafc',
+  border: '1px solid #e2e8f0',
+  textDecoration: 'none',
+  color: '#2563eb',
+  fontWeight: 500,
+  transition: 'all 150ms ease',
+  cursor: 'pointer',
+  display: 'flex',
+  alignItems: 'center',
+  gap: '8px',
+}}>
+  <span style={{ fontSize: '18px' }}>🎨</span>
+  Design Tokens
+</a>
+
+<a href="?path=/docs/accessibility" style={{
+  padding: '16px',
+  borderRadius: '8px',
+  background: '#f8fafc',
+  border: '1px solid #e2e8f0',
+  textDecoration: 'none',
+  color: '#2563eb',
+  fontWeight: 500,
+  transition: 'all 150ms ease',
+  cursor: 'pointer',
+  display: 'flex',
+  alignItems: 'center',
+  gap: '8px',
+}}>
+  <span style={{ fontSize: '18px' }}>♿</span>
+  Accessibility
+</a>
+
+<a href="?path=/docs/contributing" style={{
+  padding: '16px',
+  borderRadius: '8px',
+  background: '#f8fafc',
+  border: '1px solid #e2e8f0',
+  textDecoration: 'none',
+  color: '#2563eb',
+  fontWeight: 500,
+  transition: 'all 150ms ease',
+  cursor: 'pointer',
+  display: 'flex',
+  alignItems: 'center',
+  gap: '8px',
+}}>
+  <span style={{ fontSize: '18px' }}>🤝</span>
+  Contributing
+</a>
+
+<a href="?path=/docs/changelog" style={{
+  padding: '16px',
+  borderRadius: '8px',
+  background: '#f8fafc',
+  border: '1px solid #e2e8f0',
+  textDecoration: 'none',
+  color: '#2563eb',
+  fontWeight: 500,
+  transition: 'all 150ms ease',
+  cursor: 'pointer',
+  display: 'flex',
+  alignItems: 'center',
+  gap: '8px',
+}}>
+  <span style={{ fontSize: '18px' }}>📝</span>
+  Changelog
+</a>
+
+</div>
+
+---
+
+## 🎯 Key Features
+
+- **60+ Production-Ready Components**: A comprehensive library of accessible, reusable UI components
+- **TypeScript First**: Full type safety with excellent IDE support
+- **Zero-Runtime Styling**: Vanilla Extract CSS for optimal performance
+- **Dark Mode Support**: Built-in light and dark theme support
+- **Fully Accessible**: WCAG 2.1 AA compliant with ARIA labels and keyboard navigation
+- **Responsive Design**: Mobile-first components that work on all screen sizes
+- **Design Tokens**: Consistent spacing, colors, typography, and shadows
+- **No Dependencies**: Minimal external dependencies for maximum flexibility
+
+---
+
+## 💡 Common Tasks
+
+### Creating a Form
+
+```tsx
+import { Input, Button, Label, Field } from '@frame-ui/ui';
+
+export function LoginForm() {
+  return (
+    <form>
+      <Field>
+        <Label htmlFor="email">Email</Label>
+        <Input id="email" type="email" placeholder="you@example.com" />
+      </Field>
+      <Field>
+        <Label htmlFor="password">Password</Label>
+        <Input id="password" type="password" placeholder="••••••••" />
+      </Field>
+      <Button type="submit">Sign In</Button>
+    </form>
+  );
+}
+```
+
+### Building a Card Layout
+
+```tsx
+import { Card, Badge, Button } from '@frame-ui/ui';
+
+export function ProductCard() {
+  return (
+    <Card style={{ maxWidth: '300px' }}>
+      <Badge>New</Badge>
+      <h2>Amazing Product</h2>
+      <p>Discover why developers love this product.</p>
+      <Button>Learn More</Button>
+    </Card>
+  );
+}
+```
+
+### Using the Theme
+
+```tsx
+import { vars } from '@frame-ui/theme';
+
+export function StyledComponent() {
+  return (
+    <div style={{
+      padding: vars.space.lg,
+      background: vars.color.surface,
+      borderRadius: vars.radius.md,
+      color: vars.color.text,
+    }}>
+      Content with design system tokens
+    </div>
+  );
+}
+```
+
+---
+
+## 📋 Recent Updates
+
+### v1.0.0 - June 2024
+
+- 🎉 **Initial release** of Frame UI design system
+- 📦 **60+ components** with full TypeScript support
+- 🎨 **Vanilla Extract CSS** for zero-runtime styling
+- 🌓 **Dark mode support** with system theme integration
+- ♿ **WCAG 2.1 AA** compliant components
+
+### v0.9.0 - May 2024
+
+- ✨ **DataTable component** with advanced sorting
+- 🔧 **Improved accessibility** with ARIA labels
+- 📱 **Enhanced mobile** responsive design
+
+### v0.8.0 - April 2024
+
+- 🎠 **Carousel component**
+- 📊 **Chart component** for data visualization
+- 🎭 **Theming system** for light/dark modes
+
+---
+
+## 🤝 Contributing
+
+We love contributions! Whether you're fixing bugs, adding features, or improving documentation:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+See [Contributing Guidelines](/docs/contributing) for more details.
+
+---
+
+## 📄 License
+
+Frame UI is licensed under the MIT License. See LICENSE file for details.
+
+---
+
+**Happy building! 🚀**
+
+Made with ❤️ for developers exploring the Frame UI component library.
