@@ -20,6 +20,8 @@ const config: StorybookConfig = {
     "@storybook/addon-a11y",
   ],
 
+  // Manager configuration for custom branding
+
   viteFinal: async (config) => {
     config.plugins = config.plugins || [];
 
@@ -28,7 +30,10 @@ const config: StorybookConfig = {
     config.resolve = {
       ...config.resolve,
       alias: {
-        "@frame-ui/theme": path.resolve(__dirname, "../../../packages/theme/src"),
+        "@frame-ui/theme": path.resolve(
+          __dirname,
+          "../../../packages/theme/src",
+        ),
         "@frame-ui/ui": path.resolve(__dirname, "../../../packages/ui/src"),
       },
     };

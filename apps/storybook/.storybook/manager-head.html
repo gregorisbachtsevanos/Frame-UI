@@ -1,0 +1,349 @@
+<!-- Frame-UI Storybook Manager Head Configuration -->
+
+<!-- Browser tab title -->
+<title>Frame UI - Design System</title>
+
+<!-- Meta tags for branding and accessibility -->
+<meta
+  name="description"
+  content="Frame UI - A modern, accessible React component library and design system"
+/>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<!-- Theme color for mobile browsers -->
+<meta
+  name="theme-color"
+  content="#2563eb"
+  media="(prefers-color-scheme: light)"
+/>
+<meta
+  name="theme-color"
+  content="#1e293b"
+  media="(prefers-color-scheme: dark)"
+/>
+
+<!-- Prefers color scheme meta tag -->
+<meta name="color-scheme" content="light dark" />
+
+<!-- Custom styles for Storybook Manager -->
+<style>
+  /* ==========================================
+     FRAME-UI STORYBOOK MANAGER STYLING
+     ========================================== */
+
+  /* Import Inter font family for consistent typography */
+  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+  /* CSS Custom Properties for theme variables */
+  :root {
+    /* Light mode colors (default) */
+    color-scheme: light;
+
+    --frame-ui-primary: #2563eb;
+    --frame-ui-primary-hover: #1d4ed8;
+    --frame-ui-primary-light: #dbeafe;
+
+    --frame-ui-text: #0f172a;
+    --frame-ui-text-secondary: #475569;
+    --frame-ui-text-tertiary: #94a3b8;
+
+    --frame-ui-surface: #ffffff;
+    --frame-ui-surface-secondary: #f8fafc;
+    --frame-ui-surface-tertiary: #f1f5f9;
+
+    --frame-ui-border: #e2e8f0;
+    --frame-ui-border-secondary: #cbd5e1;
+
+    --frame-ui-shadow: rgba(15, 23, 42, 0.08);
+
+    /* Typography */
+    --frame-ui-font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+      sans-serif;
+    --frame-ui-font-mono: "Menlo", "Monaco", "Courier New", monospace;
+  }
+
+  /* Dark mode colors */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      color-scheme: dark;
+
+      --frame-ui-primary: #60a5fa;
+      --frame-ui-primary-hover: #93c5fd;
+      --frame-ui-primary-light: #1e3a8a;
+
+      --frame-ui-text: #f1f5f9;
+      --frame-ui-text-secondary: #cbd5e1;
+      --frame-ui-text-tertiary: #64748b;
+
+      --frame-ui-surface: #0f172a;
+      --frame-ui-surface-secondary: #1e293b;
+      --frame-ui-surface-tertiary: #334155;
+
+      --frame-ui-border: #334155;
+      --frame-ui-border-secondary: #475569;
+
+      --frame-ui-shadow: rgba(0, 0, 0, 0.32);
+    }
+  }
+
+  /* Reset and base styles */
+  * {
+    font-family: var(--frame-ui-font-family);
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Global background and text colors */
+  body {
+    background-color: var(--frame-ui-surface);
+    color: var(--frame-ui-text);
+    transition: background-color 250ms ease, color 250ms ease;
+  }
+
+  /* ==========================================
+     STORYBOOK MANAGER UI ELEMENTS
+     ========================================== */
+
+  /* Sidebar container */
+  [class*="sidebar"] {
+    background-color: var(--frame-ui-surface);
+    border-right-color: var(--frame-ui-border);
+  }
+
+  /* Sidebar header/branding area */
+  [class*="SideBarHeader"] {
+    background-color: var(--frame-ui-surface);
+    border-bottom-color: var(--frame-ui-border);
+  }
+
+  /* Active navigation items */
+  [class*="isActive"] {
+    color: var(--frame-ui-primary);
+    border-color: var(--frame-ui-primary);
+    background-color: var(--frame-ui-primary-light);
+  }
+
+  /* Toolbar/Header area */
+  [class*="Bar"] {
+    background-color: var(--frame-ui-surface);
+    border-bottom-color: var(--frame-ui-border);
+  }
+
+  /* Buttons */
+  button {
+    font-family: var(--frame-ui-font-family);
+    transition: all 150ms ease;
+  }
+
+  button:hover {
+    color: var(--frame-ui-primary-hover);
+  }
+
+  button:focus-visible {
+    outline: 2px solid var(--frame-ui-primary);
+    outline-offset: 2px;
+  }
+
+  /* Links */
+  a {
+    color: var(--frame-ui-primary);
+    text-decoration: none;
+    transition: color 150ms ease;
+  }
+
+  a:hover {
+    color: var(--frame-ui-primary-hover);
+    text-decoration: underline;
+  }
+
+  a:visited {
+    color: var(--frame-ui-primary-hover);
+  }
+
+  a:focus-visible {
+    outline: 2px solid var(--frame-ui-primary);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* Form elements */
+  input,
+  textarea,
+  select {
+    font-family: var(--frame-ui-font-family);
+    background-color: var(--frame-ui-surface);
+    color: var(--frame-ui-text);
+    border: 1px solid var(--frame-ui-border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    transition: all 150ms ease;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--frame-ui-text-tertiary);
+  }
+
+  input:hover,
+  textarea:hover,
+  select:hover {
+    border-color: var(--frame-ui-border-secondary);
+  }
+
+  input:focus,
+  textarea:focus,
+  select:focus {
+    outline: none;
+    border-color: var(--frame-ui-primary);
+    box-shadow: 0 0 0 3px var(--frame-ui-primary-light);
+  }
+
+  /* Search input specific styling */
+  input[type="search"],
+  input[placeholder*="search"],
+  input[placeholder*="Search"] {
+    padding-left: 36px;
+  }
+
+  /* Panels */
+  [class*="Panel"] {
+    background-color: var(--frame-ui-surface-secondary);
+    border-color: var(--frame-ui-border);
+  }
+
+  /* Tab elements */
+  [class*="Tab"] {
+    color: var(--frame-ui-text-secondary);
+    border-bottom-color: transparent;
+    transition: all 150ms ease;
+  }
+
+  [class*="Tab"][class*="active"],
+  [class*="Tab"][aria-selected="true"] {
+    color: var(--frame-ui-primary);
+    border-bottom-color: var(--frame-ui-primary);
+  }
+
+  /* Addon panels */
+  [class*="addons"] {
+    background-color: var(--frame-ui-surface-secondary);
+    border-color: var(--frame-ui-border);
+  }
+
+  /* Controls panel */
+  [class*="control"],
+  [class*="Control"] {
+    background-color: var(--frame-ui-surface);
+    border-color: var(--frame-ui-border);
+  }
+
+  /* Actions panel */
+  [class*="action"],
+  [class*="Action"] {
+    background-color: var(--frame-ui-surface);
+    border-color: var(--frame-ui-border);
+  }
+
+  /* Docs panel */
+  [class*="Docs"] {
+    background-color: var(--frame-ui-surface);
+    color: var(--frame-ui-text);
+  }
+
+  /* Canvas/Preview area */
+  [class*="canvas"],
+  [class*="Canvas"] {
+    background-color: var(--frame-ui-surface-secondary);
+  }
+
+  /* ==========================================
+     SCROLLBAR STYLING
+     ========================================== */
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--frame-ui-border-secondary);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--frame-ui-border);
+  }
+
+  /* Firefox scrollbar */
+  * {
+    scrollbar-color: var(--frame-ui-border-secondary) transparent;
+    scrollbar-width: thin;
+  }
+
+  /* ==========================================
+     ANIMATIONS & TRANSITIONS
+     ========================================== */
+
+  @media (prefers-reduced-motion: no-preference) {
+    * {
+      transition: background-color 250ms ease, color 250ms ease,
+        border-color 250ms ease, box-shadow 150ms ease;
+    }
+  }
+
+  /* ==========================================
+     ACCESSIBILITY
+     ========================================== */
+
+  /* Focus visible styles for keyboard navigation */
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: 2px solid var(--frame-ui-primary);
+    outline-offset: 2px;
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: more) {
+    :root {
+      --frame-ui-primary: #1d3dbf;
+      --frame-ui-border: #6b7280;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --frame-ui-primary: #60a5fa;
+        --frame-ui-border: #a0aec0;
+      }
+    }
+  }
+
+  /* Forced colors mode (Windows High Contrast) */
+  @media (forced-colors: active) {
+    * {
+      border-color: CanvasText;
+      color: CanvasText;
+      background-color: Canvas;
+    }
+
+    a {
+      color: LinkText;
+    }
+
+    button:focus,
+    input:focus {
+      outline: 3px solid Highlight;
+    }
+  }
+</style>

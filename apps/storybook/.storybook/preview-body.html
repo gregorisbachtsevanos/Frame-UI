@@ -1,0 +1,71 @@
+<!-- Frame-UI Preview Body Configuration -->
+
+<script>
+  /**
+   * Frame-UI Storybook Preview Title Management
+   *
+   * This script:
+   * - Sets the browser tab title with Frame-UI branding
+   * - Updates title when navigating between stories
+   * - Maintains consistent branding across all preview pages
+   */
+
+  if (typeof window !== "undefined") {
+    // Set initial page title with Frame-UI branding
+    document.title = "Frame UI - Design System";
+
+    /**
+     * Updates the document title based on current story context
+     * Called when story changes or navigation occurs
+     */
+    const updateTitle = (event) => {
+      const storyPath = window.location.search || window.location.hash;
+      if (storyPath) {
+        // Include story identifier in title
+        document.title =
+          "Frame UI - Design System" + (storyPath ? " " + storyPath : "");
+      } else {
+        document.title = "Frame UI - Design System";
+      }
+    };
+
+    // Listen for URL/hash changes (story navigation)
+    window.addEventListener("hashchange", updateTitle);
+    window.addEventListener("popstate", updateTitle);
+
+    // Listen for Storybook internal navigation messages
+    if (typeof __STORYBOOK_MODULE_PREVIEW_API__ !== "undefined") {
+      window.addEventListener("message", (event) => {
+        if (event.data.type === "NAVIGATE") {
+          updateTitle();
+        }
+      });
+    }
+
+    // Also handle visibility changes to refresh title
+    document.addEventListener("visibilitychange", () => {
+      if (!document.hidden) {
+        updateTitle();
+      }
+    });
+  }
+</script>
+
+<!-- Style overrides for preview container if needed -->
+<style>
+  /* Frame-UI Preview Container Styles */
+
+  /* Ensure body has proper background for all themes */
+  html[data-theme="light"] {
+    color-scheme: light;
+  }
+
+  html[data-theme="dark"] {
+    color-scheme: dark;
+  }
+
+  /* Default to system preference if not specified */
+  html:not([data-theme]) {
+    color-scheme: light dark;
+  }
+</style>
