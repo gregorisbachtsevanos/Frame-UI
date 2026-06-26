@@ -1,46 +1,54 @@
-import { HTMLAttributes, ReactNode } from "react";
-import clsx from "clsx";
+import { forwardRef, ReactNode } from "react";
+import * as styles from "./Alert.css";
 
-import * as styles from "./Alert.css.js";
-
-export interface AlertProps extends HTMLAttributes<HTMLDivElement> {
-  tone?: "info" | "success" | "warning" | "danger";
-
+export interface AlertProps extends React.HTMLAttributes<HTMLDivElement> {
+  type?: "info" | "success" | "warning" | "error";
   icon?: ReactNode;
+  title?: string;
+  dismissible?: boolean;
+  onDismiss?: () => void;
 }
 
-function getDefaultIcon(tone: NonNullable<AlertProps["tone"]>) {
-  switch (tone) {
-    case "success":
-      return "✓";
-
-    case "warning":
-      return "⚠";
-
-    case "danger":
-      return "⨯";
-
-    default:
-      return "ℹ";
-  }
-}
-
-export function Alert({
-  tone = "info",
-  icon,
-  children,
-  className,
-  ...props
-}: AlertProps) {
-  return (
+export const Alert = forwardRef<HTMLDivElement, AlertProps>(
+  (
+    {
+      type = "info",
+      icon,
+      title,
+      dismissible = false,
+      onDismiss,
+      className,
+      children,
+      ...props
+    },
+    ref
+  ) => (
     <div
+      ref={ref}
       role="alert"
-      className={clsx(styles.root, styles.tones[tone], className)}
+      className={[styles.root, styles.type[type], className]
+        .filter(Boolean)
+        .join(" ")}
       {...props}
     >
-      <div className={styles.icon}>{icon ?? getDefaultIcon(tone)}</div>
-
-      <div className={styles.content}>{children}</div>
+      <div className={styles.container}>
+        {icon && <div className={styles.icon}>{icon}</div>}
+        <div className={styles.content}>
+          {title && <div className={styles.title}>{title}</div>}
+          {children && <div className={styles.message}>{children}</div>}
+        </div>
+        {dismissible && (
+          <button
+            className={styles.closeButton}
+            onClick={onDismiss}
+            aria-label="Close alert"
+          >
+            ×
+          </button>
+        )}
+      </div>
     </div>
-  );
-}
+  )
+);
+
+Alert.displayName = "Alert";

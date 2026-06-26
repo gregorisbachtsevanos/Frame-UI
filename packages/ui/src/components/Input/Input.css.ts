@@ -1,13 +1,65 @@
-import { style } from "@vanilla-extract/css";
+import { style, styleVariants } from "@vanilla-extract/css";
 import { vars } from "@frame-ui/theme";
+
 export const root = style({
   width: "100%",
-  minHeight: "42px",
-  padding: "0 12px",
-  borderRadius: "12px",
-  border: "1px solid #cbd5e1",
-  background: "#ffffff",
+  fontFamily: vars.font.body,
+  borderRadius: vars.radius.md,
+  border: `1px solid ${vars.color.border}`,
+  backgroundColor: vars.color.surface,
   color: vars.color.text,
-  boxShadow: "inset 0 1px 1px rgba(2, 6, 23, 0.04)",
+  transition: `all ${vars.transition.fast}`,
+
+  selectors: {
+    "&:focus": {
+      outline: "none",
+      borderColor: vars.color.primary,
+      boxShadow: `0 0 0 2px ${vars.color.primaryLight}`,
+    },
+    "&::placeholder": {
+      color: vars.color.textMuted,
+    },
+  },
+});
+
+export const size = styleVariants({
+  sm: {
+    padding: `${vars.space[2]} ${vars.space[3]}`,
+    fontSize: vars.fontSize.sm,
+    minHeight: vars.space[8],
+  },
+  md: {
+    padding: `${vars.space[2]} ${vars.space[3]}`,
+    fontSize: vars.fontSize.base,
+    minHeight: vars.space[10],
+  },
+  lg: {
+    padding: `${vars.space[3]} ${vars.space[4]}`,
+    fontSize: vars.fontSize.lg,
+    minHeight: vars.space[12],
+  },
+});
+
+export const invalid = style({
+  borderColor: vars.color.danger,
+
+  selectors: {
+    "&:focus": {
+      boxShadow: `0 0 0 2px ${vars.color.dangerLight}`,
+    },
+  },
+});
+
+export const disabled = style({
+  opacity: 0.5,
+  cursor: "not-allowed",
+  backgroundColor: vars.color.surfaceSecondary,
+
+  selectors: {
+    "&:focus": {
+      borderColor: vars.color.border,
+      boxShadow: "none",
+    },
+  },
 });
 

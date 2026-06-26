@@ -2,57 +2,83 @@ import { style, styleVariants } from "@vanilla-extract/css";
 import { vars } from "@frame-ui/theme";
 
 export const root = style({
-  display: "flex",
-  alignItems: "flex-start",
-  gap: vars.space.md,
-
-  width: "100%",
-
   borderRadius: vars.radius.md,
-
   borderWidth: "1px",
   borderStyle: "solid",
-
-  padding: vars.space.lg,
-
+  padding: vars.space[4],
   fontFamily: vars.font.body,
   fontSize: vars.fontSize.sm,
-  lineHeight: 1.5,
-
-  boxShadow: vars.shadow.sm,
+  lineHeight: vars.lineHeight.relaxed,
 });
 
-export const tones = styleVariants({
+export const type = styleVariants({
   info: {
-    background: "#eff6ff",
-    borderColor: "#bfdbfe",
-    color: "#1e3a8a",
+    backgroundColor: vars.color.infoLight,
+    borderColor: vars.color.info,
+    color: vars.color.info,
   },
-
   success: {
-    background: "#ecfdf5",
-    borderColor: "#86efac",
-    color: "#166534",
+    backgroundColor: vars.color.successLight,
+    borderColor: vars.color.success,
+    color: vars.color.success,
   },
-
   warning: {
-    background: "#fefce8",
-    borderColor: "#fde047",
-    color: "#854d0e",
+    backgroundColor: vars.color.warningLight,
+    borderColor: vars.color.warning,
+    color: vars.color.warning,
   },
+  error: {
+    backgroundColor: vars.color.dangerLight,
+    borderColor: vars.color.danger,
+    color: vars.color.danger,
+  },
+});
 
-  danger: {
-    background: "#fef2f2",
-    borderColor: "#fca5a5",
-    color: "#991b1b",
-  },
+export const container = style({
+  display: "flex",
+  alignItems: "flex-start",
+  gap: vars.space[3],
+  width: "100%",
 });
 
 export const icon = style({
   flexShrink: 0,
-  marginTop: "2px",
+  marginTop: vars.space[0.5],
+  fontSize: "1.25em",
+  fontWeight: vars.fontWeight.bold,
 });
 
 export const content = style({
   flex: 1,
+});
+
+export const title = style({
+  fontWeight: vars.fontWeight.semibold,
+  marginBottom: vars.space[1],
+});
+
+export const message = style({
+  opacity: 0.9,
+});
+
+export const closeButton = style({
+  flexShrink: 0,
+  background: "none",
+  border: "none",
+  fontSize: "1.5em",
+  cursor: "pointer",
+  color: "inherit",
+  opacity: 0.6,
+  transition: `opacity ${vars.transition.fast}`,
+  padding: 0,
+
+  selectors: {
+    "&:hover": {
+      opacity: 1,
+    },
+    "&:focus-visible": {
+      outline: `2px solid ${vars.color.focus}`,
+      outlineOffset: "2px",
+    },
+  },
 });

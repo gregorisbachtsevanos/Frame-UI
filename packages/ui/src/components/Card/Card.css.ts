@@ -1,28 +1,46 @@
-import { style } from "@vanilla-extract/css";
+import { style, styleVariants } from "@vanilla-extract/css";
+import { vars } from "@frame-ui/theme";
 
 export const root = style({
-  borderRadius: "16px",
-  border: "1px solid #e2e8f0",
-  background: "linear-gradient(180deg, #ffffff, #f8fafc)",
-  boxShadow: "0 10px 24px rgba(15, 23, 42, 0.08)",
+  borderRadius: vars.radius.lg,
+  backgroundColor: vars.color.surface,
+  transition: `all ${vars.transition.normal}`,
   overflow: "hidden",
 });
 
+export const variant = styleVariants({
+  plain: {},
+  outlined: {
+    border: `1px solid ${vars.color.border}`,
+  },
+  elevated: {
+    boxShadow: vars.shadow.md,
+    border: `1px solid ${vars.color.border}`,
+  },
+});
+
+export const padding = styleVariants({
+  none: { padding: "0" },
+  sm: { padding: vars.space[3] },
+  md: { padding: vars.space[4] },
+  lg: { padding: vars.space[6] },
+});
+
 export const header = style({
-  padding: "16px 16px 0 16px",
-  fontWeight: 600,
+  paddingBottom: vars.space[3],
+  borderBottom: `1px solid ${vars.color.border}`,
+  fontWeight: vars.fontWeight.semibold,
+  fontSize: vars.fontSize.lg,
 });
 
 export const body = style({
-  padding: "16px",
-  fontSize: "14px",
-  lineHeight: 1.5,
-  color: "#0f172a",
+  color: vars.color.text,
 });
 
 export const footer = style({
-  padding: "0 16px 16px 16px",
+  paddingTop: vars.space[3],
+  borderTop: `1px solid ${vars.color.border}`,
   display: "flex",
   justifyContent: "flex-end",
-  gap: "8px",
+  gap: vars.space[2],
 });

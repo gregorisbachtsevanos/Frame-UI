@@ -3,20 +3,17 @@ import { vars } from "@frame-ui/theme";
 
 export const root = style({
   fontFamily: vars.font.body,
-  fontWeight: vars.fontWeight.medium,
   color: vars.color.text,
-  display: "block",
-  marginBottom: vars.space[2],
+  lineHeight: vars.lineHeight.relaxed,
+  margin: 0,
 });
 
 export const size = styleVariants({
   sm: { fontSize: vars.fontSize.sm },
-  md: { fontSize: vars.fontSize.base },
+  base: { fontSize: vars.fontSize.base },
   lg: { fontSize: vars.fontSize.lg },
 });
 
-export const required = style({
-  color: vars.color.danger,
-  marginLeft: vars.space[1],
+export const muted = style({
+  color: vars.color.textMuted,
 });
-

@@ -1,5 +1,14 @@
 // Utilities & Layout
 export * from "./components/Box";
+export * from "./components/Container";
+export * from "./components/Stack";
+export * from "./components/Divider";
+export * from "./components/Spacer";
+
+// Typography
+export * from "./components/Heading";
+export * from "./components/Text";
+export * from "./components/Paragraph";
 
 export * from "./components/Accordion";
 export * from "./components/Alert";
@@ -10,12 +19,14 @@ export * from "./components/Badge";
 export * from "./components/Breadcrumb";
 export * from "./components/Button";
 export * from "./components/ButtonGroup";
+export * from "./components/Card";
 export * from "./components/Calendar";
 export * from "./components/Card";
 export * from "./components/Carousel";
 export * from "./components/Chart";
 export * from "./components/Checkbox";
 export * from "./components/Collapsible";
+export * from "./components/Label";
 export * from "./components/Combobox";
 export * from "./components/Command";
 export * from "./components/ContextMenu";
@@ -45,6 +56,7 @@ export * from "./components/Resizable";
 export * from "./components/ScrollArea";
 export * from "./components/Select";
 export * from "./components/Separator";
+export * from "./components/Textarea";
 export * from "./components/Sheet";
 export * from "./components/Sidebar";
 export * from "./components/Skeleton";

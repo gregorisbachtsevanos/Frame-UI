@@ -5,109 +5,91 @@ export const root = style({
   display: "inline-flex",
   alignItems: "center",
   justifyContent: "center",
-  gap: vars.space.sm,
-
+  gap: vars.space[2],
   whiteSpace: "nowrap",
   verticalAlign: "middle",
-
-  borderRadius: "999px",
-
-  fontWeight: 700,
-  letterSpacing: "0.02em",
-
+  borderRadius: vars.radius.full,
+  fontWeight: vars.fontWeight.semibold,
   border: "1px solid transparent",
-
   transition: vars.transition.fast,
-
   userSelect: "none",
 });
 
 export const size = styleVariants({
   sm: {
     minHeight: "20px",
-    padding: "0 8px",
+    padding: `0 ${vars.space[2]}`,
     fontSize: vars.fontSize.xs,
   },
-
   md: {
     minHeight: "24px",
-    padding: "0 10px",
+    padding: `0 ${vars.space[2.5]}`,
     fontSize: vars.fontSize.sm,
   },
-
   lg: {
     minHeight: "30px",
-    padding: "0 14px",
-    fontSize: vars.fontSize.md,
+    padding: `0 ${vars.space[3]}`,
+    fontSize: vars.fontSize.base,
   },
 });
 
 export const tone = styleVariants({
   neutral: {
-    background: vars.color.surfaceSecondary,
+    backgroundColor: vars.color.surfaceSecondary,
     color: vars.color.textMuted,
     borderColor: vars.color.border,
   },
-
   primary: {
-    background: vars.color.primary,
+    backgroundColor: vars.color.primaryLight,
     color: vars.color.primary,
-    borderColor: vars.color.primaryHover,
+    borderColor: vars.color.primary,
   },
-
   success: {
-    background: "#ecfdf5",
-    color: "#047857",
-    borderColor: "#a7f3d0",
+    backgroundColor: vars.color.successLight,
+    color: vars.color.success,
+    borderColor: vars.color.success,
   },
-
   warning: {
-    background: "#fffbeb",
-    color: "#b45309",
-    borderColor: "#fde68a",
+    backgroundColor: vars.color.warningLight,
+    color: vars.color.warning,
+    borderColor: vars.color.warning,
   },
-
   danger: {
-    background: "#fef2f2",
-    color: "#b91c1c",
-    borderColor: "#fecaca",
+    backgroundColor: vars.color.dangerLight,
+    color: vars.color.danger,
+    borderColor: vars.color.danger,
   },
 });
 
 export const solid = styleVariants({
   true: {},
-
   false: {},
 });
 
 export const solidTone = styleVariants({
   neutral: {
-    background: vars.color.text,
-    color: "#ffffff",
+    backgroundColor: vars.color.text,
+    color: vars.color.textInverted,
     borderColor: vars.color.text,
   },
-
   primary: {
-    background: vars.color.primary,
-    color: "#ffffff",
+    backgroundColor: vars.color.primary,
+    color: vars.color.textInverted,
     borderColor: vars.color.primary,
   },
-
   success: {
-    background: "#10b981",
-    color: "#ffffff",
-    borderColor: "#10b981",
+    backgroundColor: vars.color.success,
+    color: vars.color.textInverted,
+    borderColor: vars.color.success,
   },
-
   warning: {
-    background: "#f59e0b",
-    color: "#ffffff",
-    borderColor: "#f59e0b",
+    backgroundColor: vars.color.warning,
+    color: vars.color.textInverted,
+    borderColor: vars.color.warning,
   },
-
   danger: {
-    background: "#991b1b",
-    color: "#ffffff",
-    borderColor: "#991b1b",
+    backgroundColor: vars.color.danger,
+    color: vars.color.textInverted,
+    borderColor: vars.color.danger,
   },
 });
