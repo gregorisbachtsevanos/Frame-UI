@@ -4,12 +4,12 @@ import { vars } from "@frame-ui/theme";
 export const overlay = style({
   position: "fixed",
   inset: 0,
-  background: "rgba(15, 23, 42, 0.55)",
+  background: vars.color.overlay,
   backdropFilter: "blur(4px)",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  padding: vars.space.xl,
+  padding: vars.space[6],
   zIndex: 1000,
 });
 
@@ -22,19 +22,19 @@ export const root = style({
   background: vars.color.surface,
   color: vars.color.text,
 
-  boxShadow: vars.shadow.md,
+  boxShadow: vars.shadow.lg,
 
-  padding: vars.space.xl,
+  padding: vars.space[6],
 
   display: "flex",
   flexDirection: "column",
-  gap: vars.space.lg,
+  gap: vars.space[4],
 });
 
 export const header = style({
   display: "flex",
   flexDirection: "column",
-  gap: vars.space.md,
+  gap: vars.space[3],
 });
 
 export const title = style({
@@ -53,13 +53,13 @@ export const description = style({
 export const footer = style({
   display: "flex",
   justifyContent: "flex-end",
-  gap: vars.space.lg,
+  gap: vars.space[3],
 });
 
 export const button = style({
   border: "none",
   borderRadius: vars.radius.md,
-  padding: `${vars.space.md} ${vars.space.xl}`,
+  padding: `${vars.space[2]} ${vars.space[4]}`,
   fontSize: vars.fontSize.sm,
   fontWeight: 600,
   cursor: "pointer",
@@ -86,12 +86,12 @@ export const buttonTone = styleVariants({
   },
 
   danger: {
-    background: "#fca5a5",
-    color: "#ffffff",
+    background: vars.color.danger,
+    color: vars.color.textInverted,
 
     selectors: {
       "&:hover": {
-        background: "#991b1b",
+        background: vars.color.dangerHover,
       },
     },
   },

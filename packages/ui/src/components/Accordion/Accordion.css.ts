@@ -15,7 +15,7 @@ export const trigger = style({
   alignItems: "center",
   justifyContent: "space-between",
 
-  padding: vars.space.lg,
+  padding: `${vars.space[4]} ${vars.space[4]}`,
 
   background: "transparent",
   border: "none",
@@ -23,7 +23,7 @@ export const trigger = style({
   color: vars.color.text,
 
   fontFamily: vars.font.body,
-  fontSize: vars.fontSize.md,
+  fontSize: vars.fontSize.base,
   fontWeight: 600,
 
   cursor: "pointer",
@@ -43,12 +43,11 @@ export const trigger = style({
 });
 
 export const content = style({
-  padding: vars.space.lg,
-  paddingTop: 0,
+  padding: `0 ${vars.space[4]} ${vars.space[4]}`,
 
-  color: vars.color.textMuted,
+  color: vars.color.textSecondary,
   fontSize: vars.fontSize.sm,
-  lineHeight: 1.6,
+  lineHeight: vars.lineHeight.relaxed,
 });
 
 export const icon = style({

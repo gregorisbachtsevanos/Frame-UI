@@ -1,4 +1,4 @@
-import { HTMLAttributes, ReactNode, useState } from "react";
+import { forwardRef, HTMLAttributes, ReactNode, useState } from "react";
 import * as styles from "./Popover.css.js";
 
 export interface PopoverProps
@@ -7,15 +7,28 @@ export interface PopoverProps
   content: ReactNode;
 }
 
-export function Popover({ trigger, content, ...props }: PopoverProps) {
-  const [open, setOpen] = useState(false);
+export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
+  ({ trigger, content, className, ...props }, ref) => {
+    const [open, setOpen] = useState(false);
 
-  return (
-    <div className={styles.root} {...props}>
-      <button type="button" aria-expanded={open} onClick={() => setOpen((value) => !value)}>
-        {trigger}
-      </button>
-      {open ? <div role="dialog">{content}</div> : null}
-    </div>
-  );
-}
+    return (
+      <div ref={ref} className={styles.root} {...props}>
+        <button
+          className={styles.trigger}
+          type="button"
+          aria-expanded={open}
+          onClick={() => setOpen((value) => !value)}
+        >
+          {trigger}
+        </button>
+        {open && (
+          <div className={styles.content} role="dialog">
+            {content}
+          </div>
+        )}
+      </div>
+    );
+  }
+);
+
+Popover.displayName = "Popover";

@@ -37,7 +37,7 @@ export const size = styleVariants({
   md: {
     width: "44px",
     height: "44px",
-    fontSize: vars.fontSize.md,
+    fontSize: vars.fontSize.base,
   },
 
   lg: {
@@ -95,7 +95,7 @@ export const status = styleVariants({
 
         borderRadius: "999px",
 
-        background: "#22c55e",
+        background: vars.color.success,
 
         border: `2px solid ${vars.color.surface}`,
 
@@ -116,7 +116,7 @@ export const status = styleVariants({
 
         borderRadius: "999px",
 
-        background: "#94a3b8",
+        background: vars.color.textMuted,
 
         border: `2px solid ${vars.color.surface}`,
 
@@ -137,7 +137,7 @@ export const status = styleVariants({
 
         borderRadius: "999px",
 
-        background: "#ef4444",
+        background: vars.color.danger,
 
         border: `2px solid ${vars.color.surface}`,
 
