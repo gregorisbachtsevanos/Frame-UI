@@ -31,6 +31,8 @@ export const paddingY = styleVariants({
   3: { paddingTop: vars.space["3"], paddingBottom: vars.space["3"] },
   4: { paddingTop: vars.space["4"], paddingBottom: vars.space["4"] },
   6: { paddingTop: vars.space["6"], paddingBottom: vars.space["6"] },
+  8: { paddingTop: vars.space["8"], paddingBottom: vars.space["8"] },
+  12: { paddingTop: vars.space["12"], paddingBottom: vars.space["12"] },
 });
 
 export const paddingX = styleVariants({
@@ -40,6 +42,8 @@ export const paddingX = styleVariants({
   3: { paddingLeft: vars.space["3"], paddingRight: vars.space["3"] },
   4: { paddingLeft: vars.space["4"], paddingRight: vars.space["4"] },
   6: { paddingLeft: vars.space["6"], paddingRight: vars.space["6"] },
+  8: { paddingLeft: vars.space["8"], paddingRight: vars.space["8"] },
+  12: { paddingLeft: vars.space["12"], paddingRight: vars.space["12"] },
 });
 
 export const margin = styleVariants({
@@ -60,6 +64,9 @@ export const marginY = styleVariants({
   3: { marginTop: vars.space["3"], marginBottom: vars.space["3"] },
   4: { marginTop: vars.space["4"], marginBottom: vars.space["4"] },
   6: { marginTop: vars.space["6"], marginBottom: vars.space["6"] },
+  8: { marginTop: vars.space["8"], marginBottom: vars.space["8"] },
+  12: { marginTop: vars.space["12"], marginBottom: vars.space["12"] },
+  auto: { marginTop: "auto", marginBottom: "auto" },
 });
 
 export const marginX = styleVariants({
@@ -69,6 +76,8 @@ export const marginX = styleVariants({
   3: { marginLeft: vars.space["3"], marginRight: vars.space["3"] },
   4: { marginLeft: vars.space["4"], marginRight: vars.space["4"] },
   6: { marginLeft: vars.space["6"], marginRight: vars.space["6"] },
+  8: { marginLeft: vars.space["8"], marginRight: vars.space["8"] },
+  12: { marginLeft: vars.space["12"], marginRight: vars.space["12"] },
   auto: { marginLeft: "auto", marginRight: "auto" },
 });
 

@@ -1,13 +1,16 @@
 import { style, globalStyle } from "@vanilla-extract/css";
 import { vars } from "@frame-ui/theme";
 
+// Space token mappings for semantic sizes
+// xl: 24 (96px), lg: 20 (80px), md: 12 (48px), sm: 6 (24px), xs: 4 (16px)
+
 // Hero Section
 export const heroSection = style({
   background: `linear-gradient(135deg, ${vars.color.primary} 0%, #1e40af 100%)`,
   color: "#ffffff",
-  padding: `${vars.space.xl} ${vars.space.lg}`,
+  padding: `${vars.space[24]} ${vars.space[20]}`,
   borderRadius: vars.radius.lg,
-  marginBottom: vars.space.xl,
+  marginBottom: vars.space[24],
   textAlign: "center",
   minHeight: "400px",
   display: "flex",
@@ -16,7 +19,7 @@ export const heroSection = style({
   alignItems: "center",
   "@media": {
     "(max-width: 768px)": {
-      padding: `${vars.space.lg} ${vars.space.md}`,
+      padding: `${vars.space[20]} ${vars.space[12]}`,
       minHeight: "300px",
     },
   },
@@ -25,7 +28,7 @@ export const heroSection = style({
 export const heroTitle = style({
   fontSize: "48px",
   fontWeight: 700,
-  marginBottom: vars.space.md,
+  marginBottom: vars.space[12],
   "@media": {
     "(max-width: 768px)": {
       fontSize: "32px",
@@ -36,18 +39,18 @@ export const heroTitle = style({
 export const heroSubtitle = style({
   fontSize: vars.fontSize.lg,
   opacity: 0.95,
-  marginBottom: vars.space.lg,
+  marginBottom: vars.space[20],
   maxWidth: "600px",
   "@media": {
     "(max-width: 768px)": {
-      fontSize: vars.fontSize.md,
+      fontSize: vars.fontSize.base,
     },
   },
 });
 
 export const heroCTA = style({
   display: "flex",
-  gap: vars.space.md,
+  gap: vars.space[12],
   justifyContent: "center",
   flexWrap: "wrap",
   "@media": {
@@ -62,18 +65,18 @@ export const heroCTA = style({
 export const sectionHeader = style({
   fontSize: "28px",
   fontWeight: 700,
-  marginTop: vars.space.xl,
-  marginBottom: vars.space.lg,
+  marginTop: vars.space[24],
+  marginBottom: vars.space[20],
   color: vars.color.text,
   borderBottom: `2px solid ${vars.color.primary}`,
-  paddingBottom: vars.space.md,
+  paddingBottom: vars.space[12],
 });
 
 // Grid Layouts
 export const grid = style({
   display: "grid",
-  gap: vars.space.lg,
-  marginBottom: vars.space.xl,
+  gap: vars.space[20],
+  marginBottom: vars.space[24],
 });
 
 export const gridTwoColumns = style({
@@ -114,7 +117,7 @@ export const gridFourColumns = style({
 
 // Cards
 export const card = style({
-  padding: vars.space.lg,
+  padding: vars.space[20],
   border: `1px solid ${vars.color.border}`,
   borderRadius: vars.radius.md,
   background: vars.color.surface,
@@ -129,7 +132,7 @@ export const card = style({
 export const cardHeader = style({
   fontSize: "18px",
   fontWeight: 600,
-  marginBottom: vars.space.md,
+  marginBottom: vars.space[12],
   color: vars.color.text,
 });
 
@@ -137,13 +140,13 @@ export const cardDescription = style({
   fontSize: vars.fontSize.sm,
   color: vars.color.textMuted,
   lineHeight: 1.6,
-  marginBottom: vars.space.md,
+  marginBottom: vars.space[12],
 });
 
 export const cardLink = style({
   display: "inline-flex",
   alignItems: "center",
-  gap: vars.space.sm,
+  gap: vars.space[6],
   color: vars.color.primary,
   textDecoration: "none",
   fontWeight: 500,
@@ -158,7 +161,7 @@ export const cardLink = style({
 export const categoryCard = style({
   display: "flex",
   flexDirection: "column",
-  gap: vars.space.md,
+  gap: vars.space[12],
 });
 
 export const categoryIcon = style({
@@ -176,13 +179,13 @@ export const categoryIcon = style({
 export const tokensContainer = style({
   display: "flex",
   flexDirection: "column",
-  gap: vars.space.lg,
+  gap: vars.space[20],
 });
 
 export const tokenGroup = style({
   display: "flex",
   flexDirection: "column",
-  gap: vars.space.md,
+  gap: vars.space[12],
 });
 
 export const tokenGroupTitle = style({
@@ -194,8 +197,8 @@ export const tokenGroupTitle = style({
 export const colorSwatch = style({
   display: "flex",
   alignItems: "center",
-  gap: vars.space.md,
-  padding: vars.space.md,
+  gap: vars.space[12],
+  padding: vars.space[12],
   borderRadius: vars.radius.sm,
   background: vars.color.surfaceSecondary,
 });
@@ -229,11 +232,11 @@ export const colorValue = style({
 export const typographySamples = style({
   display: "flex",
   flexDirection: "column",
-  gap: vars.space.lg,
+  gap: vars.space[20],
 });
 
 export const typographySample = style({
-  padding: vars.space.md,
+  padding: vars.space[12],
   background: vars.color.surfaceSecondary,
   borderRadius: vars.radius.sm,
   borderLeft: `4px solid ${vars.color.primary}`,
@@ -252,7 +255,7 @@ export const typographyLabel = style({
 export const quickLinksContainer = style({
   display: "grid",
   gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-  gap: vars.space.md,
+  gap: vars.space[12],
   "@media": {
     "(max-width: 768px)": {
       gridTemplateColumns: "repeat(2, 1fr)",
@@ -264,7 +267,7 @@ export const quickLinksContainer = style({
 });
 
 export const quickLinkItem = style({
-  padding: vars.space.md,
+  padding: vars.space[12],
   borderRadius: vars.radius.sm,
   background: vars.color.surfaceSecondary,
   border: `1px solid ${vars.color.border}`,
@@ -282,7 +285,7 @@ export const quickLinkItem = style({
 
 // Changelog Section
 export const changelogItem = style({
-  padding: vars.space.md,
+  padding: vars.space[12],
   borderLeft: `3px solid ${vars.color.primary}`,
   borderRadius: vars.radius.sm,
   background: vars.color.surfaceSecondary,
@@ -298,7 +301,7 @@ export const changelogVersion = style({
 export const changelogDate = style({
   fontSize: "12px",
   color: vars.color.textMuted,
-  marginBottom: vars.space.sm,
+  marginBottom: vars.space[6],
 });
 
 export const changelogList = style({
@@ -325,10 +328,10 @@ export const changelogListItem = style({
 export const container = style({
   maxWidth: "1200px",
   margin: "0 auto",
-  padding: `${vars.space.xl} ${vars.space.lg}`,
+  padding: `${vars.space[24]} ${vars.space[20]}`,
   "@media": {
     "(max-width: 768px)": {
-      padding: `${vars.space.lg} ${vars.space.md}`,
+      padding: `${vars.space[20]} ${vars.space[12]}`,
     },
   },
 });
@@ -347,21 +350,21 @@ globalStyle("[class*='darkTheme']", {
 
 export const badge = style({
   display: "inline-block",
-  padding: `${vars.space.xs} ${vars.space.sm}`,
+  padding: `${vars.space[4]} ${vars.space[6]}`,
   background: `${vars.color.primary}20`,
   color: vars.color.primary,
   borderRadius: vars.radius.sm,
   fontSize: "11px",
   fontWeight: 600,
   textTransform: "uppercase",
-  marginRight: vars.space.sm,
+  marginRight: vars.space[6],
 });
 
 export const button = style({
-  padding: `${vars.space.md} ${vars.space.lg}`,
+  padding: `${vars.space[12]} ${vars.space[20]}`,
   borderRadius: vars.radius.md,
   border: "none",
-  fontSize: vars.fontSize.md,
+  fontSize: vars.fontSize.base,
   fontWeight: 600,
   cursor: "pointer",
   transition: `all ${vars.transition.fast}`,
@@ -369,7 +372,7 @@ export const button = style({
   display: "inline-flex",
   alignItems: "center",
   justifyContent: "center",
-  gap: vars.space.sm,
+  gap: vars.space[6],
 });
 
 export const buttonPrimary = style({
