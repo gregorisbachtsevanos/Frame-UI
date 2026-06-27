@@ -1,4 +1,4 @@
-import { HTMLAttributes, ReactNode } from "react";
+import { forwardRef, HTMLAttributes, ReactNode } from "react";
 import * as styles from "./AspectRatio.css.js";
 
 export interface AspectRatioProps extends HTMLAttributes<HTMLDivElement> {
@@ -6,14 +6,13 @@ export interface AspectRatioProps extends HTMLAttributes<HTMLDivElement> {
   children?: ReactNode;
 }
 
-export function AspectRatio({
-  ratio = 16 / 9,
-  children,
-  style,
-  ...props
-}: AspectRatioProps) {
-  return (
+export const AspectRatio = forwardRef<HTMLDivElement, AspectRatioProps>(
+  (
+    { ratio = 16 / 9, children, style, className, ...props },
+    ref
+  ) => (
     <div
+      ref={ref}
       className={styles.root}
       style={{
         aspectRatio: ratio.toString(),
@@ -23,5 +22,7 @@ export function AspectRatio({
     >
       <div className={styles.content}>{children}</div>
     </div>
-  );
-}
+  )
+);
+
+AspectRatio.displayName = "AspectRatio";

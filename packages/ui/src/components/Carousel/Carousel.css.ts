@@ -1,4 +1,5 @@
 import { style } from "@vanilla-extract/css";
+import { vars } from "@frame-ui/theme";
 
 export const root = style({
   position: "relative",
@@ -12,11 +13,11 @@ export const viewport = style({
 
 export const track = style({
   display: "flex",
-  gap: "12px",
+  gap: vars.space[3],
   overflowX: "auto",
   scrollSnapType: "x mandatory",
   scrollBehavior: "smooth",
-  padding: "4px",
+  padding: vars.space[1],
 
   selectors: {
     "&::-webkit-scrollbar": { display: "none" },
@@ -34,15 +35,28 @@ export const nav = style({
   transform: "translateY(-50%)",
   width: "36px",
   height: "36px",
-  borderRadius: "999px",
-  border: "1px solid #e2e8f0",
-  background: "#fff",
+  borderRadius: vars.radius.full,
+  border: `1px solid ${vars.color.border}`,
+  background: vars.color.surface,
   display: "grid",
   placeItems: "center",
   cursor: "pointer",
-  boxShadow: "0 6px 18px rgba(15,23,42,0.12)",
+  boxShadow: vars.shadow.md,
   zIndex: 10,
+  transition: `all ${vars.transition.fast}`,
+
+  selectors: {
+    "&:hover": {
+      background: vars.color.surfaceSecondary,
+      boxShadow: vars.shadow.lg,
+    },
+
+    "&:focus-visible": {
+      outline: `2px solid ${vars.color.focusRing}`,
+      outlineOffset: "2px",
+    },
+  },
 });
 
-export const prev = style({ left: "8px" });
-export const next = style({ right: "8px" });
+export const prev = style({ left: vars.space[2] });
+export const next = style({ right: vars.space[2] });

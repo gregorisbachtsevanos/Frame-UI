@@ -20,12 +20,12 @@ export const size = styleVariants({
     padding: vars.space[1],
   },
   md: {
-    gap: `${parseInt(vars.space[1]) * 1.5}px`,
-    padding: `${parseInt(vars.space[1]) * 1.5}px`,
-  },
-  lg: {
     gap: vars.space[2],
     padding: vars.space[2],
+  },
+  lg: {
+    gap: vars.space[3],
+    padding: vars.space[3],
   },
 });
 
@@ -52,40 +52,4 @@ globalStyle(`${root}.${attached} > button:last-child`, {
   borderRight: "none",
   borderTopRightRadius: vars.radius.md,
   borderBottomRightRadius: vars.radius.md,
-});
-
-export const size = styleVariants({
-  sm: {
-    gap: "4px",
-    padding: "4px",
-  },
-  md: {
-    gap: "6px",
-    padding: "6px",
-  },
-  lg: {
-    gap: "8px",
-    padding: "8px",
-  },
-});
-
-/**
- * Applies “attached button” styling inside the group
- * Must use globalStyle because vanilla-extract does not allow
- * arbitrary element selectors inside `style()`
- */
-
-globalStyle(`${root} > button:not(:first-child)`, {
-  borderLeft: "none",
-  borderRadius: 0,
-});
-
-globalStyle(`${root} > button:first-child`, {
-  borderTopRightRadius: 0,
-  borderBottomRightRadius: 0,
-});
-
-globalStyle(`${root} > button:last-child`, {
-  borderTopLeftRadius: 0,
-  borderBottomLeftRadius: 0,
 });

@@ -1,8 +1,14 @@
-import { HTMLAttributes } from "react";
+import { forwardRef, HTMLAttributes, ReactNode } from "react";
 import * as styles from "./ScrollArea.css.js";
 
-export interface ScrollAreaProps extends HTMLAttributes<HTMLDivElement> {}
-
-export function ScrollArea(props: ScrollAreaProps) {
-  return <div className={styles.root} {...props} />;
+export interface ScrollAreaProps extends HTMLAttributes<HTMLDivElement> {
+  children?: ReactNode;
 }
+
+export const ScrollArea = forwardRef<HTMLDivElement, ScrollAreaProps>(
+  ({ className, ...props }, ref) => (
+    <div ref={ref} className={styles.root} {...props} />
+  )
+);
+
+ScrollArea.displayName = "ScrollArea";

@@ -7,7 +7,7 @@ export interface DialogProps extends Omit<HTMLAttributes<HTMLDivElement>, "title
   title?: ReactNode;
 }
 
-export function Dialog({ open, onOpenChange, title, children, ...props }: DialogProps) {
+export function Dialog({ open, onOpenChange, title, children, className, ...props }: DialogProps) {
   useEffect(() => {
     const onEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -17,9 +17,13 @@ export function Dialog({ open, onOpenChange, title, children, ...props }: Dialog
 
     if (open) {
       document.addEventListener("keydown", onEscape);
+      document.body.style.overflow = "hidden";
     }
 
-    return () => document.removeEventListener("keydown", onEscape);
+    return () => {
+      document.removeEventListener("keydown", onEscape);
+      document.body.style.overflow = "";
+    };
   }, [open, onOpenChange]);
 
   if (!open) {
@@ -27,9 +31,19 @@ export function Dialog({ open, onOpenChange, title, children, ...props }: Dialog
   }
 
   return (
-    <div className={styles.root} role="presentation" onClick={() => onOpenChange(false)}>
-      <div role="dialog" aria-modal="true" onClick={(event) => event.stopPropagation()} {...props}>
-        {title ? <h2>{title}</h2> : null}
+    <div
+      className={styles.root}
+      role="presentation"
+      onClick={() => onOpenChange(false)}
+    >
+      <div
+        className={styles.content}
+        role="dialog"
+        aria-modal="true"
+        onClick={(event) => event.stopPropagation()}
+        {...props}
+      >
+        {title && <h2 className={styles.title}>{title}</h2>}
         {children}
       </div>
     </div>
